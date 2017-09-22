@@ -1,0 +1,9 @@
+<project language="c" type="exec">
+	<source src="src" />
+	<target dir="bin" file="testc" />
+	<include src="../breder.lib/inc" />
+	<linkdir src="../breder.lib/bin" />
+	<link name="breder" />
+	<depend name="breder.lib" />
+	<compiler flag="-framework GLUT -framework OpenGL" />
+</project>

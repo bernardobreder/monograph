@@ -1,0 +1,24 @@
+
+package breder.gui.iphone.standard;
+
+import breder.gui.iphone.*;
+
+public class IPhoneContainer extends IPhoneComponent implements IIPhoneContainer {
+
+    public native IPhoneContainer (notnull Integer x, notnull Integer y, notnull Natural width, notnull Natural height) ;
+    
+    public native void add (notnull IIPhoneComponent component) ;
+    
+    public native void update () ;
+    
+    public native void paint (notnull IIPhoneGraphic g) ;
+    
+    public native IIPhoneComponent touchPress(notnull Natural x, notnull Natural y) ;
+    
+    public native void touchDrag(notnull Natural x, notnull Natural y) ;
+    
+    public native void touchRelease(notnull Natural x, notnull Natural y) ;
+	
+	public native void finalize () ;
+	
+}

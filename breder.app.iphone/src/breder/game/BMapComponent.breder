@@ -1,0 +1,50 @@
+
+package breder.game;
+
+import breder.gui.*;
+import breder.game.*;
+
+public class BMapComponent extends BComponent {
+
+    private Index row;
+    
+    private Index col;
+    
+    public property Boolean pressed;
+    
+    public BMapComponent(notnull Index row, notnull Index col) {
+        super(0, 0, 0, 0);
+        this.row = row;
+        this.col = col;
+        this.pressed = false;
+    }
+
+    public void update () {
+    }
+    
+    // public native void paint(notnull IGraphic g);
+    
+    public void paint(notnull IGraphic g) { 
+        BGraphic bg = (BGraphic) g;
+        if (this.getPressed()) {
+            bg.setColor(0, 0, 255, 255); 
+        } else { 
+            bg.setColor(255, 0, 0, 255);
+        }
+        bg.drawRect(0, 0, this.getWidth(), this.getHeight());
+    }
+    
+    public void touchPress(notnull Natural x, notnull Natural y) {
+        this.setPressed(true); 
+        BGameFrame.frame.repaint();
+    }
+    
+    public void touchDrag(notnull Natural x, notnull Natural y) {
+    }
+    
+    public void touchRelease(notnull Natural x, notnull Natural y) {
+        this.setPressed(false);
+        BGameFrame.frame.repaint();
+    }
+
+}

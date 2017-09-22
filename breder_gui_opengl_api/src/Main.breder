@@ -1,0 +1,169 @@
+
+import breder.gui.opengl.*; 
+import breder.gui.opengl.standard.*; 
+
+public class Main extends GlFrame {
+
+	private Number x; 
+	private Number y; 
+	 
+	private Number rsize; 
+	
+	private Number xstep; 
+	private Number ystep;
+	
+	private Number xrot;
+	private Number yrot;
+	
+	public Main () {
+		this.rsize = 50;
+		this.x = 0;
+		this.y = 0;	
+		this.xstep = 1;
+		this.ystep = 1;
+	}
+
+	public void paint(notnull IGlGraphic g) {
+		if (true) { // Desenha os Eixos
+			Number i = 5;
+			GlNative.push();
+			GlNative.color(255, 0, 0);
+			for (Index u = 1 ; u <= 5 ; u += 1) {
+				GlNative.translate(i, 0, 0);
+				GlNative.drawWireCube(i);
+			}
+			GlNative.pop();
+			GlNative.push();
+			GlNative.color(0, 255, 0);
+			for (Index u = 1 ; u <= 5 ; u += 1) {
+				GlNative.translate(0, i, 0);
+				GlNative.drawWireCube(i);
+			}
+			GlNative.pop();
+			GlNative.push();
+			GlNative.color(0, 0, 255);
+			for (Index u = 1 ; u <= 5 ; u += 1) {
+				GlNative.translate(0, 0, i);
+				GlNative.drawWireCube(i);
+			}
+			GlNative.pop();
+		}
+		if (true) {
+			GlNative.materialShininess(false, false, 1);  
+			GlNative.color(255, 0, 0); 
+			GlNative.rect(this.x, this.y, this.x + this.rsize, this.y - this.rsize);
+		}
+		if (true) {
+			GlNative.push(); 
+			GlNative.enableLighting();
+			GlNative.lightModelAmbient(254, 255, 255);
+			GlNative.materialAmbientDiffuse(false, true, 100,100,100);  
+			GlNative.shade(true); 
+			GlNative.beginTriangle();
+			GlNative.color(255,0,0);
+			GlNative.vertex(0,200,0);
+			GlNative.color(0,255,0);
+			GlNative.vertex(200,-70,0);
+			GlNative.color(0,0,255);
+			GlNative.vertex(-200,-70,0);
+			GlNative.end();
+			GlNative.disableLighting();
+			GlNative.pop(); 
+		}
+		if (true) {
+			GlNative.color(255, 255, 255);
+			GlNative.drawWireSphere(100, 50); 
+		}
+		if (true) {
+			GlNative.push();
+			GlNative.translate(100, 0, 0);
+			GlNative.color(0, 255, 0);
+			GlNative.drawWireSphere(100, 50);
+			GlNative.pop();
+		}
+		if (true) { 
+			GlNative.push();
+			GlNative.translate(0, -100, 0);
+			GlNative.color(255, 0, 0);
+			GlNative.drawWireSphere(100, 50);
+			GlNative.pop();
+		}
+		if (true) {
+			GlNative.push();
+			GlNative.translate(-100, 0, 0);
+			GlNative.color(0, 0, 255);
+			GlNative.drawWireSphere(100, 50);
+			GlNative.pop();
+		}
+		if (false) {
+			GlNative.push();
+			GlNative.rotateZ(this.x);
+			GlNative.beginPoint();
+			Number size = 2*Math.pi();
+			Number z = 0;
+			for (Number angle = 0 ; angle <= size ; angle += 0.1) {
+				Number x = 50 * Math.sin(angle);
+				Number y = 50 * Math.cos(angle);
+				GlNative.vertex(x, y, z);
+				z += 0.5;
+			} 
+			GlNative.end();
+			GlNative.pop();
+		}
+		GlNative.rotateZ(1);
+	}
+	
+	public void update() { 
+		Number width = this.getWidth()/2 - this.rsize; 
+		Number height = this.getHeight()/2 - this.rsize;
+
+		if (this.x > width or this.x < - width + this.rsize) {
+			this.xstep = -this.xstep;
+		}
+		if (this.y > height + this.rsize or this.y < -height ) {
+			this.ystep = -this.ystep;
+		} 
+		
+		this.x += this.xstep;
+		this.x = this.x + this.xstep; 
+		this.y = this.y + this.ystep;
+	}
+	
+	public void keyPress (notnull Natural key, notnull Natural x, notnull Natural y) {
+	}
+	
+	public void keyRelease (notnull Natural key, notnull Natural x, notnull Natural y) {
+	}
+	
+	public void mousePress (notnull Natural button, notnull Natural x, notnull Natural y) {
+	}
+	
+	public void mouseRelease (notnull Natural button, notnull Natural x, notnull Natural y) {
+	}
+	
+	public void mouseMove (notnull Natural x, notnull Natural y) {
+	}
+	
+	public void mouseDrag (notnull Natural x, notnull Natural y) {
+	}
+	
+	public void reshape (notnull Natural w, notnull Natural h) {
+		Number r = this.getWidth(); 
+		GlNative.viewport(0, 0, w, h); 
+		GlNative.matrixModeProjection();
+		GlNative.loadIdentity();
+		GlNative.ortho(-w/2, w/2, -h/2, h/2, -100, 100); 
+		GlNative.matrixModeModelView();
+		GlNative.loadIdentity();
+	} 
+	
+	public notnull Natural getFps () {
+		return 1000; 
+	}
+
+	public static void main(notnull IList<String> args) {
+		GlFrame frame = new Main(); 
+		GlFrameManager.startLoop();
+	}
+
+}

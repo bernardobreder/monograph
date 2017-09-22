@@ -1,0 +1,16 @@
+
+package breder.gui.iphone.standard;
+
+import breder.gui.iphone.*;
+
+public class IPhoneImage implements IIPhoneImage {
+
+    public native IPhoneImage (notnull String name, notnull Natural width, notnull Natural height) ;
+    
+    public native notnull Natural getWidth () ;
+    
+    public native notnull Natural getHeight () ;
+    
+	public native void finalize () ;
+	
+}

@@ -1,0 +1,20 @@
+
+package breder.gui.iphone.standard;
+
+import breder.gui.iphone.*;
+
+public class IPhoneGraphic implements IIPhoneGraphic {
+
+    public native IPhoneGraphic (notnull Number width, notnull Number height) ; 
+
+    public native void drawImage (notnull Number x, notnull Number y, notnull IIPhoneImage image) ;
+    
+    public native void drawImage (notnull Number x, notnull Number y, notnull Number imgx, notnull Number imgy, notnull Number imgw, notnull Number imgh, notnull IIPhoneImage image) ;
+    
+    public native void translate (notnull Number x, notnull Number y);
+    
+    public native void rotate (notnull Number angle);
+    
+    public native void finalize () ;
+
+}

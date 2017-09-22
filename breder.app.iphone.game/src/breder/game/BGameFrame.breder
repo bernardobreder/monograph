@@ -1,0 +1,15 @@
+
+package breder.game;
+
+import breder.gui.iphone.*;
+import breder.gui.iphone.standard.*;
+
+public class BGameFrame extends IPhoneFrame { 
+
+    public static BGameFrame frame; 
+
+    public BGameFrame () { 
+        this.setContent(new BGameContainer(0, 0, 32*100, 32*100)); 
+    }
+        
+}

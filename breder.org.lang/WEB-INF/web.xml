@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<display-name>Breder Language</display-name>
+	<description>
+    Breder Language
+	</description>
+
+	<servlet>
+		<servlet-name>Index</servlet-name>
+		<servlet-class>web.servlet.IndexServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Index</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Main</servlet-name>
+		<servlet-class>web.servlet.MainServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Main</servlet-name>
+		<url-pattern>/main</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Tail</servlet-name>
+		<servlet-class>web.servlet.TailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Tail</servlet-name>
+		<url-pattern>/tail</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Logo</servlet-name>
+		<servlet-class>web.servlet.LogoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Logo</servlet-name>
+		<url-pattern>/logo</url-pattern>
+	</servlet-mapping>
+
+    <servlet>
+        <servlet-name>Documentation</servlet-name>
+        <servlet-class>web.servlet.DocumentationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Documentation</servlet-name>
+        <url-pattern>/doc</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Forum</servlet-name>
+        <servlet-class>web.servlet.ForumServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Forum</servlet-name>
+        <url-pattern>/forum</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Api</servlet-name>
+        <servlet-class>web.servlet.ApiServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Api</servlet-name>
+        <url-pattern>/api</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Bni</servlet-name>
+        <servlet-class>web.servlet.BniServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Bni</servlet-name>
+        <url-pattern>/bni</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>VM</servlet-name>
+        <servlet-class>web.servlet.VmServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VM</servlet-name>
+        <url-pattern>/vm</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Feature</servlet-name>
+        <servlet-class>web.servlet.FeatureServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Feature</servlet-name>
+        <url-pattern>/feature</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Paper</servlet-name>
+        <servlet-class>web.servlet.PaperServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Paper</servlet-name>
+        <url-pattern>/paper</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Project</servlet-name>
+        <servlet-class>web.servlet.ProjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Project</servlet-name>
+        <url-pattern>/project</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Module</servlet-name>
+        <servlet-class>web.servlet.ModuleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Module</servlet-name>
+        <url-pattern>/module</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Downlaod</servlet-name>
+        <servlet-class>web.servlet.DownloadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Downlaod</servlet-name>
+        <url-pattern>/download</url-pattern>
+    </servlet-mapping>
+
+	<servlet>
+		<servlet-name>Tutorial</servlet-name>
+		<servlet-class>web.servlet.TutorialServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Tutorial</servlet-name>
+		<url-pattern>/tutorial</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Task</servlet-name>
+		<servlet-class>web.servlet.TaskServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Task</servlet-name>
+		<url-pattern>/task</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>TaskNew</servlet-name>
+		<servlet-class>web.servlet.TaskNewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TaskNew</servlet-name>
+		<url-pattern>/tasknew</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index</welcome-file>
+	</welcome-file-list>
+	
+</web-app>

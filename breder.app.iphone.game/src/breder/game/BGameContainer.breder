@@ -1,0 +1,60 @@
+
+package breder.game;
+
+import breder.gui.iphone.*;
+import breder.gui.iphone.standard.*;
+import breder.game.*;
+import breder.game.logic.*;
+import breder.game.component.*;
+
+public class BGameContainer extends IPhoneContainer {
+
+    public BGameContainer (notnull Integer x, notnull Integer y, notnull Natural width, notnull Natural height) {
+        super(x, y, width, height);
+        if (true) {
+		    IPhoneImage image = new IPhoneImage("Frame.png", 200, 200);
+		    if (false) {
+		    	this.add(new BGameImage(100, 100, image));
+		    }
+            if (false) { 
+		        for(Natural i = 0 ; i < 9 ; i += 1) { 
+		            Natural y = i * 100;
+		            for(Natural j = 0 ; j < 7 ; j += 1) {
+			           this.add(new BGameImage(j * 100, y, image));
+		            }
+		        }
+		    }
+		    if (false) {
+	            Natural width = image.getWidth();
+	            Natural height = image.getHeight();
+	            for (Natural i = 0 ; i < 8 ; i += 1) {
+	               this.add(new BBallImage(0, 0, width, height, image, i * 45));
+	            }
+		    }
+	    }
+        if (false) {
+        	IPhoneImage eimage = new IPhoneImage("sprite.png", 512, 1280);
+            Natural gridw = 128;
+            Natural gridh = 128;
+	    	this.add(new BSpriteImage(0, 0, eimage, 128, 128, 0, 0, 0));
+	    	if (false) {
+		        for (Natural l = 0 ; l < 4 ; l += 1) {
+			        for (Natural p = 0 ; p < 6 ; p += 1) {
+				        for (Natural i = 0 ; i < 8 ; i += 1) {
+				            for (Natural j = 0 ; j < 4 ; j += 1) { 
+				                this.add(new BSpriteImage((p*4+j)*gridw, (l*8+i)*gridh, eimage, gridw, gridh, i, j*3, (j+1)*3));
+				            }
+				        }
+			        }
+			    }
+		    }
+        }
+	    if (false) {
+           IPhoneImage pimage = new IPhoneImage("rebel.png", 110, 1896);
+           Natural gridw = 50;
+           Natural gridh = 59;
+	       this.add(new BSpriteImage(0, 0, pimage, gridw, gridh, 0, 2, 10));
+	    }
+    }
+
+}

@@ -1,0 +1,6 @@
+<project language="c" type="shared">
+	<include src="inc" />
+	<include src="../breder.lib/inc" />
+	<source src="src" />
+	<target dir="bin" file="breder.sdl" />
+</project>

@@ -1,0 +1,8 @@
+public class Main {
+
+	public static void main() {
+		Console.println("Hello");
+		Console.println("Hello");
+	}
+
+}

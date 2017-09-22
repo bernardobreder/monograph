@@ -1,0 +1,26 @@
+
+package breder.gui;
+
+public class BContainer extends BComponent implements IContainer {
+
+    public native BContainer (notnull Integer x, notnull Integer y, notnull Natural width, notnull Natural height) ;
+    
+    public native void add (notnull BComponent component) ;
+    
+    public native void update () ;
+    
+    public native void paint (notnull IGraphic g) ;
+    
+    public native void setBackColor (notnull BColor color) ;
+    
+    public native notnull BColor getBackColor () ;
+    
+    public native void touchPress(notnull Natural x, notnull Natural y) ;
+    
+    public native void touchDrag(notnull Natural x, notnull Natural y) ;
+    
+    public native void touchRelease(notnull Natural x, notnull Natural y) ;
+	
+	public native void finalize () ;
+	
+}

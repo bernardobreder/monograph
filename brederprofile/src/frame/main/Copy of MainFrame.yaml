@@ -1,0 +1,42 @@
+JFrame(title=BalanceValidationFrame.pretitle):
+    - JPanel(name=titlePanel) :
+        - JLabel(name=titleLb, text=BalanceValidationFrame.title)
+        - JLabel(name=balanceLb, font=bold)
+        - MigLayout : |
+            []       [grow]
+            titleLb  balanceLb
+    - JPanel(name=movimentPanel, groupTitle=BalanceValidationFrame.movimentTitle) :
+        - JLabel(name=pointLb, text=BalanceValidationFrame.source)
+        - HeaderComboBox(name=pointCb,editable=true, onAction=onPointComboBoxAction) :
+        - JLabel(name=roteLb, text=BalanceValidationFrame.route)
+        - HeaderComboBox(name=routeCb,editable=true, onAction=onRouteComboBoxAction)
+        - JLabel(name=insertLb, text=BalanceValidationFrame.qtd)
+        - JTextField(name=insertTx)
+        - JLabel(name=unitLb)
+        - JButton(name=insertBt, text=BalanceValidationFrame.button.add, onAction=onInsertAction)
+        - MigLayout : |
+            []      [grow]    []     [grow]    []       [50px]   []     []
+            pointLb pointCb=1 roteLb routeCb=1 insertLb insertTx unitLb insertBt
+    - JPanel(name=tablePanel , groupTitle=BalanceValidationFrame.tableTitle) :
+        - JScrollPane(name=stable) : 
+            BalanceValidationTable(name=transferTable, onSelection=onItemSelection) 
+        - MigLayout : |
+            [grow]
+            stable [grow]
+    - JPanel(name=buttonPanel):
+        - JButton(name=removeBt, text=BalanceValidationFrame.button.remove, onAction=onRemoveAction)
+        - JButton(name=reduceBt, text=BalanceValidationFrame.button.reduce, onAction=onReduceAction)
+        - JTextField(name=reduceTx)
+        - JLabel(name=reduceLb)
+        - JButton(name=saveBt, text=BalanceValidationFrame.button.save, onAction=onSaveAction)
+        - JButton(name=cancelBt, text=BalanceValidationFrame.button.cancel, onAction=onCancelAction)
+        - MigLayout: |
+           [[debug]
+           [grow]       []         [50px]   [30px]   []
+           removeBt=1   reduceBt=1 reduceTx reduceLb saveBt=1, cancelBt=1
+    - MigLayout: |
+        [grow]
+        titlePanel+*
+        movimentPanel+*
+        tablePanel+* [grow]
+        buttonPanel+*

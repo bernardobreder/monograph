@@ -1,0 +1,6 @@
+JFrame():
+    - JScrollPane(name=stable) : 
+        MainMemoryTable(name=table)
+    - MigLayout: |
+        [grow]
+        stable+* [grow]

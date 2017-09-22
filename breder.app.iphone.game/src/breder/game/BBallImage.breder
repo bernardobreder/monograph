@@ -1,0 +1,44 @@
+
+package breder.game;
+
+import breder.gui.iphone.*;
+import breder.gui.iphone.standard.*;
+
+public class BBallImage extends IPhoneImageComponent {
+
+    private Number angle;
+
+    public BBallImage(notnull Integer x, notnull Integer y, notnull Natural width, notnull Natural height, notnull IIPhoneImage image, notnull Number angle) {
+        super(x, y, image); 
+        this.setWidth(width);
+        this.setHeight(height);
+        this.angle = angle;
+    }
+    
+    public void update () {
+        this.angle = this.angle + 1;
+        if (this.angle == 360) {
+            this.angle = 0;
+        }
+        {
+            IIPhoneImage image = this.getImage();
+            Number w = BGameFrame.frame.getWidth();
+	        Number h = BGameFrame.frame.getHeight();
+	        Number min = Math.min(w, h) - image.getWidth();
+	        Number sin = Math.sin(this.angle * Math.pi180());
+	        Number cos = Math.cos(this.angle * Math.pi180());
+	        {
+	            Number x = w / 2 + sin * min / 2 - image.getWidth() / 2;
+	            Number y = h / 2 + cos * min / 2 - image.getHeight() / 2;
+	            this.setX(x);
+	            this.setY(y);
+	        }
+        }
+    }
+    
+    public void paint(notnull IIPhoneGraphic g) {
+        IIPhoneImage image = this.getImage();
+        g.drawImage(0, 0, 0, 0, image.getWidth(), image.getHeight(), image);
+    }
+    
+}

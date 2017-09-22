@@ -1,0 +1,63 @@
+package bgame;
+
+import breder.gui.opengl.*;
+import breder.gui.opengl.standard.*;
+import breder.io.local.standard.*;
+
+public class BWorld extends World {
+
+	private property Index textureIndex;
+
+	public void init() {
+		GlNative.enableDepthTest();
+ 		this.setTextureIndex(GlNative.rawImageLoad(new LocalFile("texture.raw")));
+	}
+
+	public void paint(IGlGraphic g) {
+		GlNative.enableTexture2D();
+		GlNative.bindTexture2D(this.getTextureIndex());
+		GlNative.push(); 
+            GlNative.color(200, 200, 200); 
+            GlNative.beginQuad();
+                GlNative.vertex(-1000, 0, -1000);
+                GlNative.vertex(-1000, 0, 1000);
+                GlNative.vertex(1000, 0, 1000);
+                GlNative.vertex(1000, 0, -1000);
+            GlNative.end();
+        GlNative.pop();
+        GlNative.push();
+            GlNative.color(150, 150, 150); 
+            GlNative.beginQuad();
+                GlNative.vertex(-1000, 50, -1000);
+                GlNative.vertex(-1000, 50, 1000);
+                GlNative.vertex(1000, 50, 1000);
+                GlNative.vertex(1000, 50, -1000);
+            GlNative.end();
+        GlNative.pop();
+        if (true) {
+        	this.addWall(0, 0, -200, 0, 255, 255, 150);
+        	this.addWall(-200, 0, -200, -100, 255, 50, 255);
+	        this.addWall(-200, -100, 100, -100, 255, 150, 150);
+	        this.addWall(100, 100, 100, -100, 255, 255, 150);
+	        this.addWall(250, 100, 100, 100, 100, 255, 150);
+	        this.addWall(250, 300, 250, 100, 255, 255, 150);
+	        this.addWall(250, 300, 150, 300, 50, 255, 50);
+	        this.addWall(100, 200, 150, 300, 255, 150, 150);
+        	this.addWall(-200, 200, 100, 200, 255, 255, 150);
+        	this.addWall(-200, 200, -200, 100, 50, 255, 150);
+        	this.addWall(0, 100, -200, 100, 255, 255, 255);
+        	this.addWall(0, 100, 0, 0, 50, 255, 50);
+        }
+	}
+	
+	public void addWall(notnull Number x0, notnull Number y0, notnull Number x1, notnull Number y1, notnull Natural r, notnull Natural g, notnull Natural b) {
+        GlNative.color(r, g, b);
+        GlNative.beginQuad();
+            GlNative.texture(1,0); GlNative.vertex(x0, 0, y0);
+            GlNative.texture(1,1); GlNative.vertex(x0, 50, y0);
+            GlNative.texture(0,1); GlNative.vertex(x1, 50, y1);
+            GlNative.texture(0,0); GlNative.vertex(x1, 0, y1);
+        GlNative.end();
+	}
+
+}

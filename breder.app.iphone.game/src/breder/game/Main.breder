@@ -1,0 +1,16 @@
+
+package breder.game;
+
+import breder.gui.*;
+import breder.gui.iphone.*;
+import breder.io.IOException; 
+
+public class Main {
+
+    public static IIPhoneFrame main (IList<String> args) {  
+        BGameFrame frame = new BGameFrame();
+        BGameFrame.frame = frame;  
+        return frame; 
+    }
+
+}

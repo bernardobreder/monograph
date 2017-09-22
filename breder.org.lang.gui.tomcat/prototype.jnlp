@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<jnlp spec="1.0+" 
+	codebase="http://www.breder.org/"
+	href="prototype.jnlp">
+
+  <information>
+     <title>Inpa Protótipo</title>
+     <vendor>Bernardo Breder</vendor>
+     <description>Inpa</description>
+  </information>
+					 
+  <resources>
+     <j2se version="1.6*" href="http://java.sun.com/products/autodl/j2se" initial-heap-size="128m" max-heap-size="1024m"/>
+     <jar href="inpa.jar" main="true" />
+  </resources>
+
+  <application-desc main-class="inpa.Main">
+  </application-desc>
+	 
+</jnlp>

@@ -1,0 +1,22 @@
+
+package breder.gui;
+
+public class BGraphic implements IGraphic2D {
+
+    public native void drawRect(notnull Integer x, notnull Integer y, notnull Natural width, notnull Natural height) ;
+    
+    public native void drawRound(notnull Integer x, notnull Integer y, notnull Integer width, notnull Integer height, notnull Natural round) ;
+    
+    public native void setColor(notnull Natural red, notnull Natural green, notnull Natural blue, notnull Natural alpha) ;
+    
+    public native void setColor(notnull BColor color) ;
+    
+    public native void setLineSize(notnull Natural size);
+    
+    public native void setLineColor(notnull Natural red, notnull Natural green, notnull Natural blue, notnull Natural alpha);
+    
+    public native void drawText(notnull Integer x, notnull Integer y, notnull String text);
+    
+    public native void drawImage(notnull Integer x, notnull Integer y, notnull Natural width, notnull Natural height, notnull BImage image);
+    
+}

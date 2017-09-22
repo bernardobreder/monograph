@@ -1,0 +1,17 @@
+
+package breder.gui;
+
+import breder.game.container.game.*;
+import breder.gui.*;
+
+public abstract class BFrame implements IFrame {
+
+	public native notnull Natural getWidth();
+	
+	public native notnull Natural getHeight();
+	
+	public native void setContent (IContainer container) ;
+	
+	public native void repaint();
+	
+}

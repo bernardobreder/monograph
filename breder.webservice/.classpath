@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="breder/webservice/remote/HttpConnection.java|breder/webservice/remote/HttpUrlConnection.java" kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/breder.util"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/breder.sql"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,8 @@
+class main {
+	static this run () {
+		out.println(2/2);
+		out.println(2/2/2);
+		out.println(2/2/2/2);
+		out.println(2/2/2/2/2);
+	}
+}

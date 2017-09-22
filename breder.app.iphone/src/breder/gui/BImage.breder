@@ -1,0 +1,10 @@
+
+package breder.gui;
+
+public final class BImage {
+
+    public native BImage (String pathname) throws IOException ;
+    
+	public native void finalize () ;
+	
+}

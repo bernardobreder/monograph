@@ -1,0 +1,247 @@
+inst_set_size_opcode(8);
+inst_set_size(32);
+
+memory(progmem, objstack, memstack);
+memory(progtmem, objtstack, memtstack);
+memory(object, object_data);
+memory(methods, casts);
+memory(method_cache, field_cache);
+memory(numbers, strings, booleans);
+
+- const_nil() {
+    osc = osc + 1;
+    objstack[osc] = 0;
+}
+
+- const_number(index:24) {
+    osc = osc + 1;
+    objstack[osc] = numbers[index];
+}
+
+- const_string(index:24) {
+    osc = osc + 1;
+    objstack[osc] = strings[index];
+}
+
+- const_boolean(index:1) {
+    osc = osc + 1;
+    objstack[osc] = strings[index];
+}
+
+- dec(count:24) {
+    osc = osc - count;
+}
+
+- inc(count:24) {
+    acc = count;
+    while(acc) {
+        osc = osc + 1;
+        objstack[osc] = 0;
+        acc = acc - 1;
+    }
+}
+
+- load(index:24) {
+    osc = osc + 1;
+    objstack[osc] = strings[-index];
+}
+
+- store(index:24) {
+    objstack[-index] = objstack[osc];
+    osc = osc - 1;
+}
+
+- new(index:24) {
+    osc = osc + 1;
+    objstack[osc] = new_object(index);
+}
+
+- array(index:8, index2:8) {
+    objstack[1-index] = objstack[index2-index];
+    osc = osc - index + 1;
+}
+
+- jump(index:24) {
+    pc = index;
+}
+/*
+- ojump(index:24) {
+    acc = index * sizeof(method);
+    acc = objstack[-acc];
+    if (acc == 0) {
+        throw = nullpointer();
+        osc = ostc;
+        msc = mstc;
+        pc = ptc;
+    } else {
+        msc = msc + 1;
+        memstack[msc] = pc;
+        acc = objects[acc];
+        acc = object_data[acc].cindex;
+        acc = acc * header.methods;
+        acc = acc + index;
+        pc = methods[acc].pc;
+    }
+}
+
+- sjump(index:24) {
+    msc = msc + 1;
+    memstack[msc] = pc;
+    acc = index * sizeof(method);
+    pc = methods[acc].pc;
+}
+
+- fjump(index:24) {
+    acc = objstack[osc];
+    osc = osc - 1;
+    if (acc == 0) {
+        throw = nullpointer();
+        osc = ostc;
+        msc = mstc;
+        pc = ptc;
+    } else {
+        acc = objects[acc];
+        acc = object_data[acc].data
+        if (acc == null) {
+            pc = index;
+        }
+    }
+}
+
+- tjump(index:24) {
+    acc = objstack[osc];
+    osc = osc - 1;
+    if (acc == 0) {
+        throw = nullpointer();
+        osc = ostc;
+        msc = mstc;
+        pc = ptc;
+    } else {
+        acc = objects[acc];
+        acc = object_data[acc].data
+        if (acc != null) {
+            pc = index;
+        }
+    }
+}
+
+- cjump(index:8, index2:16) {
+    if (throw != 0) {
+        acc = objects[throw];
+        acc = object_data[acc].cindex;
+        if (acc == index2) {
+            pc = pc + index;
+        }
+    }
+}
+
+- ocast(index:24) {
+    
+}
+
+- nncast() {
+    acc = objmem[osc];
+    if (acc == 0) {
+        throw = nullpointer();
+        osc = ostc;
+        msc = mstc;
+        pc = ptc;
+    }
+}
+
+- ret(count:24) {
+    pc = memstack[msc];
+    msc = msc - 1;
+    osc = osc - index;
+}
+
+- not() {
+    acc = objmem[osc];
+    if (acc == 0) {
+        throw = nullpointer();
+        osc = ostc;
+        msc = mstc;
+        pc = ptc;
+    } else {
+        acc = objects[acc];
+        acc = object_data[acc].data;
+        objmem[osc] = booleans[acc];
+    }
+}
+
+- getf(index:24) {
+    acc = objmem[osc];
+    if (acc == 0) {
+        throw = nullpointer();
+        osc = ostc;
+        msc = mstc;
+        pc = ptc;
+    } else {
+        aux = objects[acc];
+        acc = object_data[aux].cindex;
+        acc = acc * header.fields;
+        acc = acc + index;
+        acc = fields[acc];
+        acc = object_data[aux].fields[acc];
+        objmem[osc] = acc;
+    }
+}
+
+- setf(index:24) {
+    acc = objmem[osc];
+    if (acc == 0) {
+        throw = nullpointer();
+        osc = ostc;
+        msc = mstc;
+        pc = ptc;
+    } else {
+        aux = objects[acc];
+        acc = object_data[aux].cindex;
+        acc = acc * header.fields;
+        acc = acc + index;
+        acc = fields[acc];
+        object_data[aux].fields[acc] = objstack[osc-1];
+        osc = osc - 2;
+    }
+}
+
+- getsf(index:24) {
+}
+
+- setsf(index:24) {
+}
+
+- try(index:24) {
+    ostc = ostc + 1;
+    objtstack[ostc] = osc;
+    ptc = ptc + 1;
+    progtstack[ptc] = index;
+    mstc = mstc + 1;
+    memtstack[mstc] = msc;
+}
+
+- throw() {
+    throw = objstack[osc];
+    osc = osc - 1;
+    pc = progtstack[pstc];
+}
+
+- throw_true() {
+    pstc = pstc - 1;
+}
+
+- throw_false() {
+    osc = objtstack[ostc];
+    pc = progtmem[ptc];
+    ostc = ostc - 1;
+    ptc = ptc - 1;
+}
+
+- throw_store(index:24) {
+    objstack[osc-index] = throw;
+    throw = 0;
+}
+
+- new_object() {
+}
+*/

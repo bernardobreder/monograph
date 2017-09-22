@@ -1,0 +1,50 @@
+
+package breder.game;
+
+import breder.gui.iphone.*;
+import breder.gui.iphone.standard.*;
+
+public class BGameImage extends IPhoneImageComponent {
+
+    private Number i;
+    
+    private Boolean selected;
+
+    public BGameImage(notnull Integer x, notnull Integer y, notnull IIPhoneImage image) {
+        super(x, y, image); 
+        this.i = 0;
+        this.selected = false;
+        this.setSelectable(true); 
+    }
+    
+    public void update () {
+        this.i = this.i + 1;
+        Number i = 360;
+        if (this.i == i) {
+            this.i = 0;
+        }
+    }
+    
+    public void paint(notnull IIPhoneGraphic g) {
+        IIPhoneImage image = this.getImage();
+        Number w = image.getWidth();
+        Number h = image.getHeight();
+        g.translate(w/2, h/2);
+        g.rotate(this.i);
+        // if (!this.selected) {
+            g.drawImage(-w/2, -h/2, 0, 0, w, h, image);
+        // }
+        g.rotate(-this.i);
+        g.translate(-w/2, -h/2);
+    }
+    
+    public IIPhoneComponent touchPress(notnull Natural x, notnull Natural y) {
+        this.selected = true;
+        return this;
+    }
+    
+    public void touchRelease(notnull Natural x, notnull Natural y) {
+        this.selected = false;
+    }
+
+}

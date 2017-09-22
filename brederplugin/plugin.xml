@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.1"?>
+<plugin>
+
+	<extension point="org.eclipse.ui.views">
+		<view
+            category="brederplugin.category"
+            class="breder.plugin.view.project.ProjectView"
+            icon="icons/project.gif"
+            id="brederplugin.view.project.ProjectView"
+            name="Breder Project"
+            restorable="true">
+		</view>
+		<category
+            id="brederplugin.category"
+            name="Breder view">
+		</category>
+	<!--
+		<category
+            id="brederplugin.category.monografia"
+            name="Breder Monografia">
+		</category>
+		<view
+            category="brederplugin.category.monografia"
+            class="breder.plugin.view.project.SourceView"
+            icon="icons/source.gif"
+            id="brederplugin.view.project.SourceView"
+            name="Breder Source"
+            restorable="true">
+		</view>
+	-->
+	</extension>
+   
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            name="Breder Editor"
+            extensions="breder"
+            icon="icons/class.gif"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            class="breder.plugin.editor.BrederEditor"
+            id="brederplugin.editors.BrederEditor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category name="Breder"
+            id="brederplugin.wizard.build"/>
+      <wizard
+            category="brederplugin.wizard.build"
+            class="breder.plugin.wizard.build.bproject.BProjectNewWizard"
+            icon="icons/project.gif"
+            id="brederplugin.wizard.build.bproject.BProjectNewWizard"
+            name="Breder Project">
+      </wizard>
+      <wizard
+            category="brederplugin.wizard.build"
+            class="breder.plugin.wizard.build.bpackage.BPackageNewWizard"
+            icon="icons/package.gif"
+            id="brederplugin.wizard.build.bpackage.BPackageNewWizard"
+            name="Breder Package">
+      </wizard>
+      <wizard
+            category="brederplugin.wizard.build"
+            class="breder.plugin.wizard.build.bclass.BClassNewWizard"
+            icon="icons/class.gif"
+            id="brederplugin.wizard.build.bclass.BClassNewWizard"
+            name="Breder Class">
+      </wizard>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="breder.plugin.perpective.BrederPerspective"
+            icon="icons/perspective.gif"
+            id="brederplugin.perspective"
+            name="Breder">
+      </perspective>
+   </extension>
+   
+   <extension
+         id="sampleBuilder"
+         name="Breder Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="breder.plugin.builder.BBuilder">
+         </run>
+      </builder>
+   </extension>
+
+   <extension
+         id="sampleNature"
+         name="Breder Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="breder.plugin.builder.BNature">
+         </run>
+      </runtime>
+      <builder
+            id="brederplugin.sampleBuilder">
+      </builder>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="brederplugin.contribution1">
+      </objectContribution>
+   </extension>
+
+   <extension
+         id="xmlProblem"
+         name="XML Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Breder Category"
+            id="brederplugin.commands.category">
+      </category>
+      <command
+            category="Breder Category"
+            categoryId="brederplugin.commands.category"
+            id="brederplugin.commands.NewProjectCommand"
+            name="New Project Command">
+      </command>
+      <command
+            category="Breder Category"
+            categoryId="brederplugin.commands.category"
+            id="brederplugin.commands.NewPackageCommand"
+            name="New Package Command">
+      </command>
+      <command
+            category="Breder Category"
+            categoryId="brederplugin.commands.category"
+            id="brederplugin.commands.NewClassCommand"
+            name="New Class Command">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="breder.plugin.handlers.BNewProjectHandler"
+            commandId="brederplugin.commands.NewProjectCommand">
+      </handler>
+      <handler
+            class="breder.plugin.handlers.BNewPackageHandler"
+            commandId="brederplugin.commands.NewPackageCommand">
+      </handler>
+      <handler
+            commandId="brederplugin.commands.NewClassCommand"
+            class="breder.plugin.handlers.BNewClassHandler">
+      </handler>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="brederplugin.toolbars.BrederToolbar">
+            <command
+                  commandId="brederplugin.commands.NewProjectCommand"
+                  icon="icons/project.gif"
+                  id="brederplugin.toolbars.NewProjectCommand"
+                  tooltip="New Project">
+            </command>
+            <command
+                  commandId="brederplugin.commands.NewPackageCommand"
+                  icon="icons/package.gif"
+                  id="brederplugin.toolbars.NewPackageCommand"
+                  tooltip="New Package">
+            </command>
+            <command
+                  commandId="brederplugin.commands.NewClassCommand"
+                  icon="icons/class.gif"
+                  tooltip="New Class"
+                  id="brederplugin.toolbars.NewClassCommand">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.debug.core.launchDelegates">
+      <launchDelegate
+            delegate="breder.plugin.launch.BrederLaunchDelegate"
+            id="brederplugin.launchDelegate1"
+            name="Breder Test"
+            sourceLocatorId="org.eclipse.jdt.debug.ui.javaSourceLocator"
+            sourcePathComputerId="org.eclipse.cdt.debug.core.sourcePathComputer"
+            type="org.eclipse.jdt.launching.javaApplet">
+      </launchDelegate>
+   </extension>
+   
+   <extension point="org.eclipse.debug.core.launchConfigurationTypes">
+	    <launchConfigurationType
+           delegate="breder.plugin.launch.BrederLaunchDelegate"
+           id="breder.launch.BrederLaunchConfigurationDelegate"
+           modes="run, debug"
+           name="Breder Application">        
+	    </launchConfigurationType>
+	</extension>
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+		<launchConfigurationTabGroup
+			class="breder.plugin.launch.tab.BrederLaunchConfigurationTabGroup"
+			id="brederplugin.launchConfigurationTabGroup1"
+			type="breder.launch.BrederLaunchConfigurationDelegate">
+		</launchConfigurationTabGroup>
+	</extension>
+   
+	<extension point="org.eclipse.debug.ui.launchShortcuts">
+		<shortcut
+        class="breder.plugin.launch.BrederLaunchShortcut"
+        icon="icons/launch.gif"
+        id="brederplugin.shortcut1"
+        label="Breder Launch"
+        modes="run, debug">
+			<contextualLaunch>
+				<enablement>
+				<!--<with variable="selection">
+					<count value="1"/>
+					<iterate>
+						<test property="org.eclipse.cdt.launch.isExecutable"/>
+					</iterate>
+				</with>-->
+				</enablement>
+			<contextLabel mode="run" label="Breder Execute"/>
+			<contextLabel mode="debug" label="Breder Debug"/>
+		</contextualLaunch>
+		</shortcut>
+	</extension>
+ 	
+ 	<extension
+       point="org.eclipse.ui.propertyPages">
+		<page
+		  class="breder.plugin.properties.ProjectPropertyPage"
+		  id="breder.plugin.properties.samplePropertyPage"
+		  name="Breder Project"
+		  objectClass="org.eclipse.core.resources.IProject">
+			<enabledWhen>
+				<instanceof
+	              value="org.eclipse.core.resources.IProject">
+				</instanceof>
+			</enabledWhen>
+		</page>
+	</extension>
+
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			name="Breder Preferences"
+			class="breder.plugin.preferences.BrederPreferencePage"
+			id="breder.plugin.preferences.BrederPreferencePage">
+		</page>
+	</extension>
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="breder.plugin.preferences.PreferenceInitializer">
+		</initializer>
+	</extension>
+</plugin>

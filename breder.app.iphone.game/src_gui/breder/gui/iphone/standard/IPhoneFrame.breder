@@ -1,0 +1,14 @@
+
+package breder.gui.iphone.standard;
+
+import breder.gui.iphone.*;
+
+public abstract class IPhoneFrame implements IIPhoneFrame {
+
+	public final native notnull Natural getWidth();
+	
+	public final native notnull Natural getHeight();
+	
+	public native void setContent (IIPhoneContainer container) ;
+	
+}

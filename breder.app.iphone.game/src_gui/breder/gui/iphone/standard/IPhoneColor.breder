@@ -1,0 +1,12 @@
+
+package breder.gui.iphone.standard;
+
+import breder.gui.iphone.*;
+
+public final class IPhoneColor implements IIPhoneColor {
+
+    public native IPhoneColor (notnull Natural red, notnull Natural green, notnull Natural blue, notnull Natural alpha) ;
+    
+	public native void finalize () ;
+	
+}

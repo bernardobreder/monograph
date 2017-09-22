@@ -1,0 +1,7 @@
+<project language="breder">
+	<source src="src" />
+	<target src="bin" />
+	<link project="breder.sdl" />
+	<run classname="breder.test.Test">
+	</run>
+</project>

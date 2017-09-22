@@ -1,0 +1,29 @@
+
+package breder.gui;
+
+public class BImageComponent extends BComponent {
+
+    private BImage image;
+
+    public BImageComponent (notnull Integer x, notnull Integer y, notnull Natural width, notnull Natural height, notnull BImage image) {
+        super(x, y, width, height);
+        this.image = image;
+    }
+
+    public void paint (notnull IGraphic g) {
+        BGraphic bg = (BGraphic) g; 
+        bg.setColor(0, 0, 0, 150);
+        bg.drawRect(0, 0, this.getWidth(), this.getHeight());
+        bg.drawText(100, 100, "Bernardo Breder");
+        bg.drawImage(0, 0, 200, 200, this.image);
+    }
+
+    public void update () {}
+    
+    public void touchPress(notnull Natural x, notnull Natural y) {}
+    
+    public void touchDrag(notnull Natural x, notnull Natural y) {}
+    
+    public void touchRelease(notnull Natural x, notnull Natural y) {}
+
+}

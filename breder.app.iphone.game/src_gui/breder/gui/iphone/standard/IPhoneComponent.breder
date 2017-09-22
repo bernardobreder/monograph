@@ -1,0 +1,42 @@
+
+package breder.gui.iphone.standard;
+
+import breder.gui.iphone.*;
+
+public abstract class IPhoneComponent implements IIPhoneComponent { 
+
+    public native IPhoneComponent (notnull Integer x, notnull Integer y, notnull Natural width, notnull Natural height) ;
+    
+    public void init () {}
+    
+    public final native notnull Number getX(); 
+    
+    public final native notnull Number getY();
+    
+    public native void setX(notnull Number value);
+    
+    public native void setY(notnull Number value);
+
+	public final native notnull Natural getWidth();
+	
+	public final native notnull Natural getHeight();
+	
+	public native void setWidth(notnull Natural value); 
+    
+    public native void setHeight(notnull Natural value);
+    
+    public final native IPhoneContainer getParent () ;
+    
+    public final native notnull Integer getAbsoluteX () ;
+    
+    public native notnull Integer getAbsoluteY () ;
+    
+    public native void setParent (IIPhoneContainer container) ;
+    
+    public native notnull Boolean isSelectable () ;
+    
+    public native void setSelectable(notnull Boolean flag) ;
+    
+	public native void finalize () ;
+	
+}

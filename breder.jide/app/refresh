@@ -1,0 +1,10 @@
+rm -rf breder.lib/src
+rm -rf breder.lib/inc
+mkdir breder.lib/src
+mkdir breder.lib/inc
+mkdir breder.lib/src/breder
+mkdir breder.lib/inc/breder
+cp -r ../../breder.lib/src/*.c breder.lib/src
+cp -r ../../breder.lib/src/breder/*.c breder.lib/src/breder
+cp -r ../../breder.lib/inc/*.h breder.lib/inc
+cp -r ../../breder.lib/inc/breder/*.h breder.lib/inc/breder

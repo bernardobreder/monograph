@@ -1,0 +1,26 @@
+
+<document package="index">
+	<index text="Introdução"> A maquina virtual é um aplicativo desenvolvido na Linguagem
+		C Ansi com o objetivo de simular a arquitetura de uma maquina. Apartir dessa
+		arquitetura simulada, é possível controlar melhor o comportamento e o
+		andamento da execução do aplicativo desenvolvido pelo usuário na linguagem
+		Breder.</index>
+	<index text="Opcodes">
+		Na maquina virtual, é uma arquiteture simulada que executa instruções igual a
+		uma máquina comum. Porém, as instruções que a maquina executa são instruções
+		que somente ela sabe executar. Como descrito acima, existem diversas
+		instruções que a maquina virtual Breder sabe executar. Abaixo será detalhada
+		cada dessas instruções :
+		<op>
+			<b>load x</b>
+			: Empilha o objeto na pilha localizado na posição
+			<i>x</i>
+		</op>
+		<op>
+			<b>inc x</b>
+			: Empilha
+			<i>x</i>
+			objetos nulos no topo da pilha.
+		</op>
+	</index>
+</document>

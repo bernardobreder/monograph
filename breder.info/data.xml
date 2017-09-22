@@ -1,0 +1,26 @@
+<root version="0.1">
+	<new>
+	</new>
+	<document>
+	</document>
+	<api>
+		<class name="breder.lang.String">
+			<desc> This is a classe that represent the String of a code.</desc>
+			<method name="length">
+				<desc>This method will return the length of a String.</desc>
+			</method>
+		</class>
+		<class name="breder.lang.Number">
+			<desc> This is a classe that represent the Number not integer of a code.
+			</desc>
+			<method name="operatorEqual">
+				<desc>This method will return if the number equal with other.</desc>
+				<param name="other" class="breder.lang.Number"> number that will test if is equal.</param>
+			</method>
+		</class>
+	</api>
+	<bni>
+	</bni>
+	<download>
+	</download>
+</root>

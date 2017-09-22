@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--codebase="http://bernardobreder.kamotini.kinghost.net/desktop"-->
+<jnlp spec="1.0+" 
+	codebase="http://www.breder.org/infomarka"
+	href="start.jnlp">
+
+  <information>
+     <title>InfoMarka</title>
+     <homepage href="index.html" />
+     <vendor>InfoMarka</vendor>
+     <description>InfoMarka</description>
+  </information>
+					 
+  <resources>
+     <j2se version="1.6*" href="http://java.sun.com/products/autodl/j2se" initial-heap-size="128m" max-heap-size="1024m"/>
+     <jar href="client.jar" main="true" />
+  </resources>
+
+  <application-desc main-class="infomarka.Main">
+  </application-desc>
+	 
+</jnlp>

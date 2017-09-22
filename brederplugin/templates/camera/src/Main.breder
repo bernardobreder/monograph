@@ -1,0 +1,13 @@
+import bgame.*;
+import breder.gui.opengl.standard.*;
+ 
+public class Main { 
+
+	public static void main(notnull IList<String> args) {
+		World world = new BWorld();
+		Camera camera = new BCamera();
+		camera.setWorld(world);
+		GlFrameManager.startLoop();  
+	}
+ 
+} 

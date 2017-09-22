@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/breder.compiler/src/breder/compiler/BrederJCompiler.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="breder.compiler.BrederJCompiler"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="Main -o ../blng.compiler/bin/binary.b -cp ../blng.compiler/src -cp ../blng.lang/src -cp ../blng.util/src -cp ../blng.math/src -cp ../blng.io/src -cp ../blng.sql/src -no_breder_home"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="breder.compiler"/>
+</launchConfiguration>

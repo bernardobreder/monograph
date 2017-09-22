@@ -1,0 +1,33 @@
+
+package breder.game;
+
+import breder.gui.*;
+import breder.game.*;
+import breder.game.logic.*;
+import breder.game.component.*;
+
+public class BGameContainer extends BContainer {
+
+    public BGameContainer (notnull Integer x, notnull Integer y, notnull Natural width, notnull Natural height) {
+        super(x, y, width, height);
+        Natural w = this.getWidth();
+        Natural h = this.getHeight();
+        // this.add(new BImageComponent(0, 0, width, height, new BImage("Demo.png")));
+        {
+            Natural rows = 16;
+            Natural cols = 12;
+            Natural gridSize = 64;
+            for (Index i = 1 ; i <= cols ; i += 1) { 
+                for (Index j = 1 ; j <= rows ; j += 1) {
+                    BMapComponent c = new BMapComponent(i, j);
+                    c.setX((i-1) * gridSize);
+                    c.setY((j-1) * gridSize);
+                    c.setWidth(gridSize);
+                    c.setHeight(gridSize);
+                    this.add(c);
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,10 @@
+<api class="breder.lang.String">
+	<desc>Classe que representa o tipo primitivo de texto. Apartir dessa classe,
+		todas as operações de modificação, será sempre retornado uma nova String com
+		ela.</desc>
+	<method name="public notnull Natural length()">
+		<desc>Método que retorna o comprimento de uma String.</desc>
+		<return>notnull Natural - Quantidade de caracteres que a String possui.
+		</return>
+	</method>
+</api>

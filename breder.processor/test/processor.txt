@@ -1,0 +1,211 @@
+#define OPCODE_CONST_NIL 1
+#define OPCODE_CONST_NUMBER 2
+#define OPCODE_CONST_STRING 3
+#define OPCODE_CONST_BOOLEAN 4
+#define OPCODE_CONST_CLASS 5
+#define OPCODE_CONST_DEC 6
+#define OPCODE_CONST_INC 7
+
+#define NUMBER_REG 0
+#define STRING_REG 2*1024+1
+#define BOOLEAN_REG STRING_REG + 1024
+#define CLASS_REG BOOLEAN_REG + 2
+
+inst_set_size_opcode(8);
+inst_set_size(32);
+
+- const_nil() {
+    soc = soc + 1;
+    somem[soc] = 0;
+}
+
+- const_number(index:24) {
+    soc = soc + 1;
+    somem[soc] = cmem[index + NUMBER_REG];
+}
+
+- const_string(index:24) {
+    soc = soc + 1;
+    somem[soc] = cmem[index + STRING_REG];
+}
+
+- const_boolean(index:1) {
+    soc = soc + 1;
+    somem[soc] = cmem[index + BOOLEAN_REG];
+}
+
+- const_class(index:24) {
+    soc = soc + 1;
+    somem[soc] = cmem[index + CLASS_REG];
+}
+
+- dec(count:24) {
+    soc = soc - count;
+}
+
+- inc(count:24) {
+    while(count) {
+        soc = soc + 1;
+        somem[soc] = 0;
+        count = count - 1;
+    }
+}
+
+- load(index:24) {
+    a = somem[soc - index];
+    soc = soc + 1;
+    somem[soc] = a;
+}
+
+- store(index:24) {
+    somem[soc - index] = somem[soc];
+    soc = soc - 1;
+}
+
+- new(index:24);
+
+- array(index:8, index2:8) {
+    somem[1 - index] = somem[index2 - index];
+    soc = soc - index + 1;
+}
+
+- jump(index:24) {
+    pc = index;
+}
+
+- ojump(index:24);
+
+- sjump(index:24);
+
+- fjump(index:24) {
+    a = somem[soc];
+    if(a != 0 and object_data(a) != 0) {
+        pc = index;
+    }
+    soc = soc - 1;
+}
+
+- tjump(index:24) {
+    a = somem[soc];
+    if(a != 0 and object_data(a) != 0) {
+        pc = index;
+    }
+    soc = soc - 1;
+}
+
+- cjump(index:8, index2:16) {
+    if(rthrow != 0 and object_class(rthrow) == index2) {
+        pc = pc + index;
+    }
+}
+
+- cast(index:24);
+
+- nncast();
+
+- ret(count:24) {
+    if(stc == 0) {
+        half();
+    }
+    pc = stmem[stc];
+    stc = stc - 1;
+    soc = soc - index;
+}
+
+- not() {
+    a = somem[soc];
+    if(a == null) {
+        throw_null();
+    }
+    somem[soc] = bool(object_data(a)==null);
+}
+
+- getf(index:24) {
+    a = somem[soc];
+    if(a == null) {
+        throw_null();
+    }
+    b = field(object_class(a), index);
+    somem[soc] = object_field(b);
+}
+
+- setf(index:24) {
+    a = somem[soc];
+    if(a == null) {
+        throw_null();
+    }
+    b = field(object_class(a), index);
+    field_set(b, somem[soc-1]);
+    soc = soc - 2;
+}
+
+- getsf(index:24) {
+    soc = soc + 1;
+    somem[soc] = sfield_get(index);
+}
+
+- setsf(index:24) {
+    a = sfield_get(index);
+    if(a != null) {
+        object_used_dec(a);
+    }
+    a = somem[soc];
+    if(a != null) {
+        object_used_inc(a);
+    }
+    sfield_set(index, a);
+    soc = soc - 1;
+}
+
+- throw() {
+    rthrow = somem[soc];
+    soc = soc - 1;
+}
+
+- try();
+
+- throw_true();
+
+- throw_false();
+
+- throw_store(index:24) {
+    somem[soc - index] = rthrow;
+    rthrow = 0;
+}
+
+- cor() {
+    a = somem[soc-1];
+    b = somem[soc];
+    if(a == null or b == null) {
+        throw_null();
+    }
+    soc = soc - 1;
+    somem[soc] = bool(object_data(a) or object_data(b));
+}
+
+- cand() {
+    a = somem[soc-1];
+    b = somem[soc];
+    if(a == null or b == null) {
+        throw_null();
+    }
+    soc = soc - 1;
+    somem[soc] = bool(object_data(a) and object_data(b));
+}
+
+- equal() {
+    a = somem[soc-1];
+    b = somem[soc];
+    c = object_class(a);
+    if(a == null) {
+        c = 0;
+    } else if(c == number_class_index() or c == integer_class_index() or c == natural_class_index() or c == index_class_index()) {
+        c = object_data(a) == object_data(b);
+    } else if(c == boolean_class_index()) {
+        c = object_data(a) == object_data(b);
+    } else if(c == string_class_index()) {
+        
+    } else {
+        c = a == b;
+    }
+}

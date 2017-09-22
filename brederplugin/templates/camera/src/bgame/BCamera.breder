@@ -1,0 +1,63 @@
+package bgame;
+
+import breder.lang.*;
+import breder.math.*;
+import breder.gui.*;
+import breder.gui.opengl.standard.*;
+import breder.gui.opengl.*;
+
+public class BCamera extends Camera {
+ 
+    public BCamera() {
+        super();
+        this.setPositionVector(new Vector3D(50, 10, 0));
+    }
+    
+    public void keyAction() {
+        if ( GlNative.isKeyPressed(GlNative.getKeyUp()) ) {
+            this.moveForward(-1); 
+        }
+        if ( GlNative.isKeyPressed(GlNative.getKeyDown()) ) {
+            this.moveForward(1);
+        }
+        if ( GlNative.isKeyPressed(GlNative.getKeyF1()) ) {
+            this.strafeRight(1);
+        }
+        if ( GlNative.isKeyPressed(GlNative.getKeyF2()) ) {
+            this.strafeRight(-1);
+        }
+        if ( GlNative.isKeyPressed(GlNative.getKeyF3()) ) {
+            this.rotateZ(-1); 
+        }
+        if ( GlNative.isKeyPressed(GlNative.getKeyF4()) ) {
+            this.rotateZ(1);
+        }
+        if ( GlNative.isKeyPressed(GlNative.getKeyF5()) ) {
+            this.moveUpward(-1); 
+        }
+        if ( GlNative.isKeyPressed(GlNative.getKeyF6()) ) {
+            this.moveUpward(1);
+        }
+        if ( GlNative.isKeyPressed(GlNative.getKeyF7()) ) {
+            this.rotateX(-1); 
+        }
+        if ( GlNative.isKeyPressed(GlNative.getKeyF8()) ) {
+            this.rotateX(1);
+        }
+        if ( GlNative.isKeyPressed(GlNative.getKeyLeft()) ) {
+            this.rotateY(-4); 
+        }
+        if ( GlNative.isKeyPressed(GlNative.getKeyRight()) ) {
+            this.rotateY(4);
+        }
+    } 
+
+	public void update () {
+		this.keyAction();
+	}
+	
+	public notnull Natural getFps() {
+		return 100;
+	}
+	
+}

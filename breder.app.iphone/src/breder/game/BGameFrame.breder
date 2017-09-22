@@ -1,0 +1,23 @@
+
+package breder.game;
+
+import breder.game.container.game.*;
+import breder.gui.*;
+
+public class BGameFrame extends BFrame {
+
+    public static BGameFrame frame;
+
+    public void init () { 
+        this.setContent(new BGameContainer(0, 0, this.getWidth(), this.getHeight()));
+    }
+    
+    public notnull Boolean canRotate() {
+        return false;
+    }
+
+    public notnull Natural getFps() {
+        return 0;
+    } 
+    
+}

@@ -1,0 +1,14 @@
+
+package breder.game;
+
+import breder.gui.*;
+
+public class Main {
+
+    public static IFrame main (IList<String> args) {
+        BGameFrame frame = new BGameFrame(); 
+        BGameFrame.frame = frame;
+        return frame;
+    }
+
+}

@@ -1,0 +1,30 @@
+
+package breder.gui.iphone.standard;
+
+import breder.gui.iphone.*;
+
+public class IPhoneImageComponent extends IPhoneComponent {
+
+    public property IIPhoneImage image;
+
+    public IPhoneImageComponent (notnull Integer x, notnull Integer y, notnull IIPhoneImage image) {
+        super(x, y, image.getWidth(), image.getHeight());
+        this.setImage(image);
+    }
+    
+    public void update () {}
+    
+    public void paint(notnull IIPhoneGraphic g) {
+        IIPhoneImage image = this.getImage();
+        g.drawImage(0, 0, 0, 0, image.getWidth(), image.getHeight(), image);
+    }
+    
+    public IIPhoneComponent touchPress(notnull Natural x, notnull Natural y) {
+        return this;
+    }
+    
+    public void touchDrag(notnull Natural x, notnull Natural y) {}
+    
+    public void touchRelease(notnull Natural x, notnull Natural y) {}
+    
+}

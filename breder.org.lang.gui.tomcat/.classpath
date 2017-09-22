@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="WEB-INF/src"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jstl.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/standard.jar"/>
+	<classpathentry exported="true" kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+	<classpathentry exported="true" kind="var" path="TOMCAT_HOME/lib/jasper.jar"/>
+	<classpathentry exported="true" kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
+	<classpathentry exported="true" kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
+	<classpathentry exported="true" kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/breder.org.lang.gui.server"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/breder.org.lang.gui.shared"/>
+	<classpathentry kind="output" path="WEB-INF/classes"/>
+</classpath>

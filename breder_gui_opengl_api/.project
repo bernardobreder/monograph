@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>breder_gui_opengl_api</name>
+	<comment>source : src
+</comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>brederplugin.sampleBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>brederplugin.sampleNature</nature>
+	</natures>
+</projectDescription>

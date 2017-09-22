@@ -1,0 +1,10 @@
+
+package breder.gui;
+
+public final class BColor {
+
+    public native BColor (notnull Natural red, notnull Natural green, notnull Natural blue, notnull Natural alpha) ;
+    
+	public native void finalize () ;
+	
+}

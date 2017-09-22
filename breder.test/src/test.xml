@@ -1,0 +1,4550 @@
+
+<test name="return">
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+			public notnull Boolean equal(Object expected, Object value) {
+				if (expected == null and value == null) { return true; }
+				if (expected == value) { return true; }
+				else { return false; }
+			}
+			public static void main(notnull IList\<String> args) {}
+		}
+    </source>
+</test>
+
+<test name="return">
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+			public notnull Boolean equal(Object expected, Object value) {
+				if (expected == null and value == null) { return true; }
+				if (expected == value) { return true; }
+				throw new RuntimeException();
+			}
+			public static void main(notnull IList\<String> args) {}
+		}
+    </source>
+</test>
+
+<test name="stress.StringBuilder">
+    <expected>BernardoBrederBCB</expected>
+    <expected>A</expected>
+    <expected>true</expected>
+    <expected>true</expected>
+    <expected>A</expected>
+    <expected></expected>
+    <expected>true</expected>
+    <expected>true</expected>
+    <source name="breder.Test">
+        package breder;
+        import breder.util.*;
+        public class Test {
+            public static void main(notnull IList\<String> args) {
+                StringBuilder sb = new StringBuilder();
+                sb.append("Bernardo");
+                sb.append("Breder");
+                sb.append("ABC", 2);
+                sb.append("ABC", 2, 1);
+                Console.println(sb.toString());
+                sb.clear();
+                sb.append("A", 1);
+                Console.println(sb.toString());
+                try {
+                    sb.append("A", 0);
+                    Console.println(false);
+                } catch ( IndexOutOfBoundsRuntimeException e ) {
+                    Console.println(true);
+                }
+                try {
+                    sb.append("A", 2);
+                    Console.println(false);
+                } catch ( IndexOutOfBoundsRuntimeException e ) {
+                    Console.println(true);
+                }
+                sb.clear();
+                sb.append("A", 1, 1);
+                Console.println(sb.toString());
+                sb.clear();
+                sb.append("A", 1, 0);
+                Console.println(sb.toString());
+                try {
+                    sb.append("A", 1, 2);
+                    Console.println(false);
+                } catch ( IndexOutOfBoundsRuntimeException e ) {
+                    Console.println(true);
+                }
+                try {
+                    sb.append("A", 2, 2);
+                    Console.println(false);
+                } catch ( IndexOutOfBoundsRuntimeException e ) {
+                    Console.println(true);
+                }
+            }
+        }
+    </source>
+</test>
+
+<test name="for">
+    <expected>0</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static void main(notnull IList\<String> args) {
+                for(Number i = 0 ; i \< 1 ; i += 1) {
+                    Console.println(i);
+                }
+            }
+        }
+    </source>
+</test>
+
+<test name="for">
+    <expected>0</expected>
+    <expected>1</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static void main(notnull IList\<String> args) {
+                for(Number i = 0 ; i \<= 1 ; i += 1) {
+                    Console.println(i);
+                }
+            }
+        }
+    </source>
+</test>
+
+<test name="for">
+    <expected>0</expected>
+    <expected>0.500000</expected>
+    <expected>1</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static void main(notnull IList\<String> args) {
+                for(Number i = 0 ; i \<= 1 ; i += 0.5) {
+                    Console.println(i);
+                }
+            }
+        }
+    </source>
+</test>
+
+<test name="for">
+    <expected>l=1</expected>
+    <expected>c=1</expected>
+    <expected>c=2</expected>
+    <expected>l=2</expected>
+    <expected>c=1</expected>
+    <expected>c=2</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static void main(notnull IList\<String> args) {
+                for(Index l = 1 ; l \<= 2 ; l += 1) {
+                    Console.println("l="+l);
+                    for(Index c = 1 ; c \<= 2 ; c += 1) {
+                        Console.println("c="+c);
+                    }
+                }
+            }
+        }
+    </source>
+</test>
+
+<test name="package">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+</test>
+
+<test name="package">
+	<expected endwith="true">package must be the name 'breder'</expected>
+	<source name="breder.Test">
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+</test>
+
+<test name="package">
+	<expected endwith="true">package must be empty name</expected>
+	<source name="Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+</test>
+
+<test name="package">
+	<source name="Test">
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+</test>
+
+<test name="test2">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+</test>
+
+<test name="test1">
+	<expected>
+		in the class 'breder.Test', not found the method starter '() main (breder.util.IList\<breder.lang.String>)'
+	</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+		}
+	</source>
+</test>
+
+<test name="test2">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+</test>
+
+<test name="test3">
+	<expected></expected>
+	<expected>true</expected>
+	<expected>false</expected>
+	<expected>-1</expected>
+	<expected>0</expected>
+	<expected>1</expected>
+	<expected>999999999.999999</expected>
+	<expected>-999999999.999999</expected>
+	<expected>test</expected>
+	<expected>testtest</expected>
+	<expected>testtest1</expected>
+	<expected>testtest1test</expected>
+	<expected>testtest1testtrue</expected>
+	<expected>testtest1testtrue1test</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Console.println();
+				Console.println(true);
+				Console.println(false);
+				Console.println(-1);
+				Console.println(0);
+				Console.println(1);
+				Console.println(999999999.999999);
+				Console.println(-999999999.999999);
+				Console.println("test");
+				Console.println("test"+"test");
+				Console.println("test"+"test"+1);
+				Console.println("test"+"test"+1+"test");
+				Console.println("test"+"test"+1+"test"+true);
+				Console.println("test"+"test"+1+"test"+true+1+"test");
+			}
+		}
+	</source>
+</test>
+
+<test name="test4">
+	<expected>0</expected>
+	<expected>0</expected>
+	<expected>1</expected>
+	<expected>2</expected>
+	<expected>4</expected>
+	<expected>24</expected>
+	<expected>14</expected>
+	<expected>20</expected>
+	<expected>5</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Console.println(0+0);
+				Console.println(1-1);
+				Console.println(1*1);
+				Console.println(1+1);
+				Console.println(2*2);
+				Console.println(2*3*4);
+				Console.println(2+3*4);
+				Console.println((2+3)*4);
+				Console.println(10/2);
+			}
+		}	
+	</source>
+</test>
+
+<test name="throws">
+	<expected endwith="true">the method has exception of type 'breder.lang.Exception'</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void a () throws Exception {}
+			public static void main(notnull IList\<String> args) {
+				Test.a();
+			}
+		}	
+	</source>
+</test>
+
+<test name="throws">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void a () throws RuntimeException {}
+			public static void main(notnull IList\<String> args) {
+				Test.a();
+			}
+		}	
+	</source>
+</test>
+
+<test name="throws">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void a () throws Throw {}
+			public static void main(notnull IList\<String> args) {
+				Test.a();
+			}
+		}	
+	</source>
+</test>
+
+<test name="throws">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void a () throws Exception {}
+			public static void main(notnull IList\<String> args) throws Exception {
+				Test.a();
+			}
+		}	
+	</source>
+</test>
+
+<test name="throws">
+	<expected endwith="true">the method has exception of type 'breder.lang.Exception'</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void a () throws Exception {}
+			public static void main(notnull IList\<String> args) throws RuntimeException {
+				Test.a();
+			}
+		}
+	</source>
+</test>
+
+<test name="throws">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void a () throws Exception {}
+			public static void main(notnull IList\<String> args) {
+			}
+		}	
+	</source>
+</test>
+
+<test name="throw">
+    <expected>throw breder.lang.Throw :</expected>
+    <expected>method () Throw ()</expected>
+    <expected>method () main (breder.util.IList\<breder.lang.String>)</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static void main(notnull IList\<String> args) {
+                throw new Throw();
+            }
+        }   
+    </source>
+</test>
+
+<test name="throw">
+    <expected>throw breder.lang.Throw :</expected>
+    <expected>method () Throw ()</expected>
+    <expected>method () main (breder.util.IList\<breder.lang.String>)</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static void main(notnull IList\<String> args) {
+                throw new Throw();
+                Console.println("a");
+            }
+        }   
+    </source>
+</test>
+
+<test name="throw">
+    <expected>throw breder.lang.Exception :</expected>
+    <expected>method () Throw ()</expected>
+    <expected>method () Exception ()</expected>
+    <expected>method () a ()</expected>
+    <expected>method () main (breder.util.IList\<breder.lang.String>)</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static void a () throws Exception {
+                throw new Exception();
+                Console.println("b");
+            }
+            public static void main(notnull IList\<String> args) throws Exception {
+                Test.a();
+                Console.println("a");
+            }
+        }   
+    </source>
+</test>
+
+<test name="throw">
+	<expected>throw breder.lang.RuntimeException :</expected>
+	<expected>method () Throw ()</expected>
+	<expected>method () RuntimeException ()</expected>
+	<expected>method () main (breder.util.IList\<breder.lang.String>)</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				throw new RuntimeException();
+			}
+		}	
+	</source>
+</test>
+
+<test name="throw">
+	<expected>throw breder.lang.Exception :</expected>
+	<expected>method () Throw ()</expected>
+	<expected>method () Exception ()</expected>
+	<expected>method () main (breder.util.IList\<breder.lang.String>)</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				throw new Exception();
+			}
+		}	
+	</source>
+</test>
+
+<test name="throw">
+    <expected>1</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static void main(notnull IList\<String> args) {
+                try {
+                    throw new Exception();
+                } catch ( Exception e ) {
+                    Console.println(1);
+                }
+            }
+        }   
+    </source>
+</test>
+
+<test name="if">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				if (true) {
+					Console.println(1);
+				}
+			}
+		}	
+	</source>
+</test>
+
+<test name="if">
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static void main(notnull IList\<String> args) {
+                if (false) {
+                    Console.println("1");
+                }
+            }
+        }   
+    </source>
+</test>
+
+<test name="if">
+    <expected>true</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static notnull String a () {
+                return "ae";    
+            }
+            public final static void main(notnull IList\<String> args) {
+                if (Test.a() != null) {
+                    Console.println(true);
+                } else {
+                    Console.println(false);
+                }
+            }
+        }   
+    </source>
+</test>
+
+<test name="if">
+    <expected>true</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static Number i;
+            public final static void main(notnull IList\<String> args) {
+                if (Test.i == null) {
+                    Console.println(true);
+                }
+            }
+        }   
+    </source>
+</test>
+
+<test name="if">
+    <expected>true</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static Number i;
+            public final static void main(notnull IList\<String> args) {
+                if (Test.i  != null) {
+                    Console.println(false);
+                } else {
+                    Console.println(true);
+                }
+            }
+        }   
+    </source>
+</test>
+
+<test name="if">
+    <expected>true</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static Number i;
+            public final static void main(notnull IList\<String> args) {
+                if (Test.i == null) {
+                    Console.println(true);
+                }
+            }
+        }   
+    </source>
+</test>
+
+<test name="if">
+    <expected>true</expected>
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static Number i;
+            public final static void main(notnull IList\<String> args) {
+                if (Test.i != null) {
+                    Console.println(false);
+                } else {
+                    Console.println(true);
+                }
+            }
+        }   
+    </source>
+</test>
+
+<test name="if-else">
+	<expected>if</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				if (true) {
+					Console.println("if");
+				} else {
+					Console.println("else");
+				}
+			}
+		}	
+	</source>
+</test>
+
+<test name="if-else">
+	<expected>else</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				if (false) {
+					Console.println("if");
+				} else {
+					Console.println("else");
+				}
+			}
+		}	
+	</source>
+</test>
+
+<test name="if-elseif-else">
+	<expected>if</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				if (true) {
+					Console.println("if");
+				} elseif (true) {
+					Console.println("elseif");
+				} else {
+					Console.println("else");
+				}
+			}
+		}	
+	</source>
+</test>
+
+<test name="if-elseif-else">
+	<expected>elseif</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				if (false) {
+					Console.println("if");
+				} elseif (true) {
+					Console.println("elseif");
+				} else {
+					Console.println("else");
+				}
+			}
+		}	
+	</source>
+</test>
+
+<test name="if-elseif-else">
+	<expected>else</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				if (false) {
+					Console.println("if");
+				} elseif (false) {
+					Console.println("elseif");
+				} else {
+					Console.println("else");
+				}
+			}
+		}	
+	</source>
+</test>
+
+<test name="if-elseif-elseif-else">
+	<expected>elseif2</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				if (false) {
+					Console.println("if");
+				} elseif (false) {
+					Console.println("elseif1");
+				} elseif (true) {
+					Console.println("elseif2");
+				} else {
+					Console.println("else");
+				}
+			}
+		}	
+	</source>
+</test>
+
+<test name="if-elseif-elseif-else">
+	<expected>elseif1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				if (false) {
+					Console.println("if");
+				} elseif (true) {
+					Console.println("elseif1");
+				} elseif (false) {
+					Console.println("elseif2");
+				} else {
+					Console.println("else");
+				}
+			}
+		}	
+	</source>
+</test>
+
+<test name="if-elseif-elseif-else">
+	<expected>if</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				if (true) {
+					Console.println("if");
+				} elseif (false) {
+					Console.println("elseif1");
+				} elseif (false) {
+					Console.println("elseif2");
+				} else {
+					Console.println("else");
+				}
+			}
+		}	
+	</source>
+</test>
+
+<test name="if-elseif-elseif-else">
+	<expected>else</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				if (false) {
+					Console.println("if");
+				} elseif (false) {
+					Console.println("elseif1");
+				} elseif (false) {
+					Console.println("elseif2");
+				} else {
+					Console.println("else");
+				}
+			}
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public Test() {
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public Test() {
+				super();
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}	
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public Test () {
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public Test () {
+				super();
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public Test () {
+				super();
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public Test1() {
+			}
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public Test () {
+				super();
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public Test1() {
+				super();
+			}
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public Test () {
+				super(1);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public Test1(Number x) {
+				super();
+			}
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 , Test2 {
+			public Test () {
+				super(;);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+		}	
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 , Test2 {
+			public Test () {
+				super(;);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public Test1 () {}
+		}	
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public Test2 () {}
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 , Test2 {
+			public Test () {
+				super(1;2);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public Test1(Number x) {
+				super();
+			}
+		}	
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public Test2(Number x) {
+				super();
+			}
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<expected>1</expected>
+	<expected>2</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 , Test2 {
+			public Test () {
+				super(1;2);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public Test1(Number x) {
+				Console.println(x);
+				super();
+			}
+		}	
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public Test2(Number x) {
+				Console.println(x);
+				super();
+			}
+		}	
+	</source>
+</test>
+
+<test name="new">
+	<expected>2</expected>
+	<expected>3</expected>
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 , Test2 {
+			public Test () {
+				super(2;1);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}	
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 extends Test3 {
+			public Test1(Number x) {
+				Console.println(x);
+				super(x+1);
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public Test2(Number x) {
+				Console.println(x);
+				super();
+			}
+		}	
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public class Test3 {
+			public Test3(Number x) {
+				Console.println(x);
+				super();
+			}
+		}	
+	</source>
+</test>
+
+<test name="field.static">
+    <source name="breder.Test">
+        package breder;
+        public class Test {
+            public static Number i;
+            public static void main(notnull IList\<String> args) {
+                Test.i = 1;
+            }       
+        }
+    </source>
+</test>
+
+<test name="field.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static Number i;
+			public static void main(notnull IList\<String> args) {
+				Test.i = 1;
+				Console.println(Test.i);
+			}		
+		}
+	</source>
+</test>
+
+<test name="field.static">
+	<expected>null</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static Number i;
+			public static void main(notnull IList\<String> args) {
+				Test.i = null;
+				Console.println(Test.i);
+			}		
+		}
+	</source>
+</test>
+
+<test name="field.static">
+	<expected>null</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static Number i;
+			public static void main(notnull IList\<String> args) {
+				Console.println(Test.i);
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.static">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void a () {}
+			public static void main(notnull IList\<String> args) {
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void a () {
+				Console.println(1);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test.a();
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void a (Number i) {
+				Console.println(i);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test.a(1);
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.static">
+	<expected>1</expected>
+	<expected>2</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void a (Number i, Number u) {
+				Console.println(i);
+				Console.println(u);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test.a(1,2);
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.static">
+	<expected>1</expected>
+	<expected>2</expected>
+	<expected>3</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static Number a (Number i, Number u) {
+				Console.println(i);
+				Console.println(u);
+				return 3;
+			}
+			public static void main(notnull IList\<String> args) {
+				Number i = Test.a(1,2);
+				Console.println(i);
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.static">
+	<expected>1</expected>
+	<expected>2</expected>
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static Number a (Number i, Number u) {
+				Console.println(i);
+				Console.println(u);
+				return i;
+			}
+			public static void main(notnull IList\<String> args) {
+				Number i = Test.a(1,2);
+				Console.println(i);
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.static">
+	<expected>1</expected>
+	<expected>2</expected>
+	<expected>1</expected>
+	<expected>2</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static Number, Number a (Number i, Number u) {
+				Console.println(i);
+				Console.println(u);
+				return i, u;
+			}
+			public static void main(notnull IList\<String> args) {
+				Number i, Number u = Test.a(1,2);
+				Console.println(i);
+				Console.println(u);
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.static">
+	<expected>1</expected>
+	<expected>2</expected>
+	<expected>1</expected>
+	<expected>2</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Number i, Number u = Test2.a(1,2);
+				Console.println(i);
+				Console.println(u);
+			}		
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public static Number, Number a (Number i, Number u) {
+				Console.println(i);
+				Console.println(u);
+				return i, u;
+			}
+		}
+	</source>
+</test>
+
+<test name="field">
+	<expected>3</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			private Number i;
+			public Test () {
+				this.i = 3;
+			}
+			public Number getI() { return this.i; }
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				Console.println(t.getI());
+			}
+		}	
+	</source>
+</test>
+
+<test name="field">
+	<expected>1</expected>
+	<expected>2</expected>
+	<expected>3</expected>
+	<expected>4</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			private Number i;
+			private Number u;
+			public Test (Number i, Number u) {
+				this.i = i;
+				this.u = u;
+			}
+			public Number getI() { return this.i; }
+			public Number getU() { return this.u; }
+			public static void main(notnull IList\<String> args) {
+				Test t1 = new Test(1,2);
+				Test t2 = new Test(3,4);
+				Console.println(t1.getI());
+				Console.println(t1.getU());
+				Console.println(t2.getI());
+				Console.println(t2.getU());
+			}
+		}
+	</source>
+</test>
+
+<test name="field">
+	<expected>3</expected>
+	<expected>2</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			private Number i;
+			public Test () {
+				this.i = 3;
+			}
+			public Number getI() { return this.i; }
+			public void setI(Number i) { this.i = i; }
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				Console.println(t.getI());
+				t.setI(2);
+				Console.println(t.getI());
+			}
+		}
+	</source>
+</test>
+
+<test name="field">
+	<expected>3</expected>
+	<expected>2</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Test1 t = new Test1();
+				Console.println(t.getI());
+				t.setI(2);
+				Console.println(t.getI());
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			private Number i;
+			public Test1 () {
+				this.i = 3;
+			}
+			public Number getI() { return this.i; }
+			public void setI(Number i) { this.i = i; }
+		}
+	</source>
+</test>
+
+<test name="field">
+	<expected>3</expected>
+	<expected>2</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				Test1 t = new Test();
+				Console.println(t.getI());
+				t.setI(2);
+				Console.println(t.getI());
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public Test1 () {
+				this.i = 3;
+			}
+			private Number i;
+			public Number getI() { return this.i; }
+			public void setI(Number i) { this.i = i; }
+		}
+	</source>
+</test>
+
+<test name="field">
+	<expected>2</expected>
+	<expected>3</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			private Number u;
+			public Number getU() { return this.u; }
+			public void setU(Number u) { this.u = u; }
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.setI(2);
+				Console.println(t.getI());
+				t.setU(3);
+				Console.println(t.getU());
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public Test1 () {
+				this.i = 3;
+			}
+			private Number i;
+			public Number getI() { return this.i; }
+			public void setI(Number i) { this.i = i; }
+		}
+	</source>
+</test>
+
+<test name="field">
+	<expected>2</expected>
+	<expected>3</expected>
+	<expected>4</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 , Test2 {
+			private Number u;
+			public Number getU() { return this.u; }
+			public void setU(Number u) { this.u = u; }
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.setI(2);
+				Console.println(t.getI());
+				t.setU(3);
+				Console.println(t.getU());
+				t.setX(4);
+				Console.println(t.getX());
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public Test1 () {
+				this.i = 3;
+			}
+			private Number i;
+			public Number getI() { return this.i; }
+			public void setI(Number i) { this.i = i; }
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public Test2 () {
+				this.x = 3;
+			}
+			private Number x;
+			public Number getX() { return this.x; }
+			public void setX(Number x) { this.x = x; }
+		}
+	</source>
+</test>
+
+<test name="field">
+	<expected>5</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test2 {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.setX(1);
+				t.setY(5);
+				Console.println(t.getY());
+			}		
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 extends Test3 {
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public class Test3 {
+			private Number y;
+			public void setX(Number x) {}
+			public void setY(Number y) { this.y = y; }
+			public Number getY() { return this.y; }
+		}
+	</source>
+</test>
+
+<test name="field">
+	<expected>5</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test2 {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.setX(1);
+				t.setY(5);
+				Console.println(t.getY());
+			}		
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 extends Test3 {
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public class Test3 {
+			private Number y;
+			public void setX(Number x) {}
+			public void setY(Number y) { this.y = y; }
+			public Number getY() { return this.y; }
+		}
+	</source>
+</test>
+
+<test name="field">
+	<expected>5</expected>
+	<expected>6</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test2 {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.setX(1);
+				t.setY(5);
+				t.setZ(6);
+				Console.println(t.getY());
+				Console.println(t.getZ());
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 extends Test3 {
+			private Number z;
+			public void setZ(Number z) { this.z = z; }
+			public Number getZ() { return this.z; }
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public class Test3 {
+			private Number y;
+			public void setX(Number x) {}
+			public void setY(Number y) { this.y = y; }
+			public Number getY() { return this.y; }
+		}
+	</source>
+</test>
+
+<test name="method.notstatic">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public void a() {}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.notstatic">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public void a() {
+				Console.println(1);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.a();
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.notstatic">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public void a(Number i) {
+				Console.println(i);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.a(1);
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.notstatic">
+	<expected>1</expected>
+	<expected>2</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public void a(Number i, Number u) {
+				Console.println(i);
+				Console.println(u);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.a(1,2);
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.notstatic">
+	<expected>1</expected>
+	<expected>2</expected>
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public Number a(Number i, Number u) {
+				Console.println(i);
+				Console.println(u);
+				return i;
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				Number i = t.a(1,2);
+				Console.println(i);
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.notstatic">
+	<expected>1</expected>
+	<expected>2</expected>
+	<expected>1</expected>
+	<expected>2</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public Number, Number a(Number i, Number u) {
+				Console.println(i);
+				Console.println(u);
+				return i, u;
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				Number i, Number u = t.a(1,2);
+				Console.println(i);
+				Console.println(u);
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.notstatic">
+	<expected>1</expected>
+	<expected>2</expected>
+	<expected>1</expected>
+	<expected>3</expected>
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public Number a(Number i, Number u) {
+				Console.println(i);
+				Console.println(u);
+				return i;
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				Number i = t.a(t.a(1,2),3);
+				Console.println(i);
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.notstatic">
+	<expected>3</expected>
+	<expected>4</expected>
+	<expected>1</expected>
+	<expected>3</expected>
+	<expected>1</expected>
+	<expected>3</expected>
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public Number a(Number i, Number u) {
+				Console.println(i);
+				Console.println(u);
+				return i;
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				Number i = t.a(t.a(1,t.a(3,4)),3);
+				Console.println(i);
+			}		
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test1.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public void a() {
+				Console.println("Test.a");
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test2.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public void a() {
+				Console.println("Test.a");
+			}
+			public static void main(notnull IList\<String> args) {
+				Test2 t = new Test2();
+				t.a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 extends Test2 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test1.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public void a() {
+				Console.println("Test.a");
+			}
+			public static void main(notnull IList\<String> args) {
+				Test1 t = new Test1();
+				t.a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 extends Test2 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public void a() {
+				Console.println("Test.a");
+			}
+			public static void main(notnull IList\<String> args) {
+				Test1 t = new Test();
+				t.a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 extends Test2 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public void a() {
+				Console.println("Test.a");
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 extends Test2 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected endwith="true">ambiguidade entre metodos</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1, Test2 {
+			public void a() {
+				Console.println("Test.a");
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test1.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				((Test1)t).a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test2.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				((Test2)t).a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test1.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				((Test1)t).a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 extends Test3 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public class Test3 {
+			public void a() {
+				Console.println("Test3.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				((Test1)t).a();
+			}		
+			public void a() {
+				Console.println("Test.a");
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 extends Test3 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public class Test3 {
+			public void a() {
+				Console.println("Test3.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test3.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				((Test1)t).a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 extends Test3 {
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public class Test3 {
+			public void a() {
+				Console.println("Test3.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test3.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				new Test().a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 extends Test3 {
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public class Test3 {
+			public void a() {
+				Console.println("Test3.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test3.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				((Test1)new Test()).a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 extends Test3 {
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public class Test3 {
+			public void a() {
+				Console.println("Test3.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly">
+	<expected>Test4.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1, Test2, Test4 {
+			public static void main(notnull IList\<String> args) {
+				((Test4)new Test()).a();
+			}		
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 extends Test3 {
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public class Test3 {
+			public void a() {
+				Console.println("Test3.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+	<source name="breder.Test4">
+		package breder;
+		public class Test4 {
+			public void a() {
+				Console.println("Test4.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="method.notstatic.poly.circle">
+	<expected endwith="true">Test2.a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				((Test2)new Test()).a();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 extends Test2 {
+			public void a() {
+				Console.println("Test1.a");
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public void a() {
+				Console.println("Test2.a");
+			}
+		}
+	</source>
+</test>
+
+<test name="property">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public property Number i;
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.setI(1);
+				Console.println(t.getI());
+			}
+		}
+	</source>
+</test>
+
+<test name="property">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public property Number i;
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.setI(1);
+				t.getI();
+				t.setI(1);
+				Console.println(t.getI());
+			}
+		}
+	</source>
+</test>
+
+<test name="property">
+	<expected endwith="true">can not access the method</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			private property Number i;
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.setI(1);
+				t.getI();
+				t.setI(1);
+				Console.println(t.getI());
+			}
+		}
+	</source>
+</test>
+
+<test name="property">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static property Number i;
+			public static void main(notnull IList\<String> args) {
+				Test.setI(1);
+				Test.getI();
+				Test.setI(1);
+				Console.println(Test.getI());
+			}
+		}
+	</source>
+</test>
+
+<test name="property">
+	<expected>1</expected>
+	<expected>2</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static property Number i;
+			public property Number U;
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				Test.setI(1);
+				Test.getI();
+				Test.setI(1);
+				t.setU(2);
+				Console.println(Test.getI());
+				Console.println(t.getU());
+			}
+		}
+	</source>
+</test>
+
+<test name="access.field">
+	<expected>5</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static Number i;
+			public static void main(notnull IList\<String> args) {
+				Test.i = 5;
+				Console.println(Test.i);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.field">
+	<expected>5</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			protected static Number i;
+			public static void main(notnull IList\<String> args) {
+				Test.i = 5;
+				Console.println(Test.i);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.field">
+	<expected>5</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			private static Number i;
+			public static void main(notnull IList\<String> args) {
+				Test.i = 5;
+				Console.println(Test.i);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.field">
+	<expected endwith="true">a public field only with static declaration</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public Number i;
+			public Test() {
+				this.i = 1;
+				Console.println(this.i);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.field">
+	<expected endwith="true">a protected field only with static declaration</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			protected Number i;
+			public Test() {
+				this.i = 1;
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				Console.println(t.i);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.field">
+	<expected endwith="true">can not access the field</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			private Number i;
+			public Test() {
+				this.i = 1;
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				Console.println(t.i);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.field">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			private Number i;
+			public Test() {
+				this.i = 1;
+				Console.println(this.i);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.field">
+	<expected endwith="true">a protected field only with static declaration</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			protected Number i;
+			public Test() {
+				this.i = 1;
+				Console.println(this.i);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.method">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public void a () {
+				Console.println(1);
+			}
+			public Test() {
+				this.a();
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.method">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			protected void a () {
+				Console.println(1);
+			}
+			public Test() {
+				this.a();
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}
+	</source>
+</test>
+
+
+<test name="access.method">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			private void a () {
+				Console.println(1);
+			}
+			public Test() {
+				this.a();
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.method">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public void a () {
+				Console.println(1);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.a();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.method">
+	<expected endwith="true">can not access the method</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			protected void a () {
+				Console.println(1);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.a();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.method">
+	<expected endwith="true">can not access the method</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			private void a () {
+				Console.println(1);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t.a();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.method.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void a () {
+				Console.println(1);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test.a();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.method.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			protected static void a () {
+				Console.println(1);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test.a();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.method.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			private static void a () {
+				Console.println(1);
+			}
+			public static void main(notnull IList\<String> args) {
+				Test.a();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.method.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void a () {
+				Console.println(1);
+			}
+			public Test() {
+				Test.a();
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.method.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			protected static void a () {
+				Console.println(1);
+			}
+			public Test() {
+				Test.a();
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.method.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			private static void a () {
+				Console.println(1);
+			}
+			public Test() {
+				Test.a();
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+</test>
+
+<test name="access.source.method.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Test1.a();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public static void a() {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.source.method.static">
+	<expected endwith="true">can not access the method</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Test1.a();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			private static void a() {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.source.method.static">
+	<expected endwith="true">can not access the method</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Test1.a();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			protected static void a() {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.source.method.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public Test() {
+				Test1.a();
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public static void a() {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.source.method.static">
+	<expected endwith="true">can not access the method</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public Test() {
+				Test1.a();
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			protected static void a() {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.source.method.static">
+	<expected endwith="true">can not access the method</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public Test() {
+				Test1.a();
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			private static void a() {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.poly.method">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				Test1.a();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public static void a() {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.poly.method">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				Test1.a();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			protected static void a() {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.poly.method">
+	<expected endwith="true">can not access the method</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				Test1.a();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			private static void a() {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.poly.method">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public Test() {
+				Test1.a();
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public static void a() {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.poly.method">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public Test() {
+				Test1.a();
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			protected static void a() {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.poly.method">
+	<expected endwith="true">can not access the method</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public Test() {
+				Test1.a();
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			private static void a() {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="access.poly.field.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				Test1.a = 1;
+				Console.println(Test1.a);
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public static Number a;
+		}
+	</source>
+</test>
+
+<test name="access.poly.field.static">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				Test1.a = 1;
+				Console.println(Test1.a);
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			protected static Number a;
+		}
+	</source>
+</test>
+
+<test name="access.poly.field.static">
+	<expected endwith="true">can not access the field</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				Test1.a = 1;
+				Console.println(Test1.a);
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			private static Number a;
+		}
+	</source>
+</test>
+
+<test name="access.poly.field">
+	<expected endwith="true">a public field only with static declaration</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public Test() {
+				this.a = 1;
+				Console.println(this.a);
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			public Number a;
+		}
+	</source>
+</test>
+
+<test name="access.poly.field">
+	<expected endwith="true">a protected field only with static declaration</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public Test() {
+				this.a = 1;
+				Console.println(this.a);
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			protected Number a;
+		}
+	</source>
+</test>
+
+<test name="access.poly.field">
+	<expected endwith="true">can not access the field</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public Test() {
+				this.a = 1;
+				Console.println(this.a);
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public class Test1 {
+			private Number a;
+		}
+	</source>
+</test>
+
+<test name="abstract">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				Console.println(1);
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public abstract class Test1 {
+		}
+	</source>
+</test>
+
+<test name="abstract">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public abstract class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				Console.println(1);
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public abstract class Test1 {
+		}
+	</source>
+</test>
+
+<test name="abstract">
+	<expected endwith="true">can not create a instance of this type</expected>
+	<source name="breder.Test">
+		package breder;
+		public abstract class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				new Test();
+				Console.println(1);
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public abstract class Test1 {
+		}
+	</source>
+</test>
+
+<test name="abstract">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				new Test();
+				Console.println(1);
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public abstract class Test1 {
+		}
+	</source>
+</test>
+
+<test name="abstract.method">
+	<expected endwith="true">the class not implemented the method '() a ()'</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public static void main(notnull IList\<String> args) {
+				new Test();
+				Console.println(1);
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public abstract class Test1 {
+			public abstract void a();
+		}
+	</source>
+</test>
+
+<test name="abstract.method">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test1 {
+			public void a() {
+				Console.println(1);
+			}
+			public static void main(notnull IList\<String> args) {
+				new Test().a();
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public abstract class Test1 {
+			public abstract void a();
+		}
+	</source>
+</test>
+
+<test name="operator.generic">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t + t;
+			}
+			public void operatorSum(Test t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.generic">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t + 1;
+			}
+			public void operatorSum(Number t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.generic">
+	<expected endwith="true">not found the operatorSum</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				t + 1;
+			}
+			public void operatorSum(Test t, Number t) {
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.generic">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				Test t2 = t + t;
+				if(t == t2) {
+					Console.println(1);
+				}
+			}
+			public Test operatorSum(Test t) {
+				return t;
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.generic">
+	<expected>1</expected>
+	<expected>4</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				Console.println(t + t);
+				Console.println(2 * (t + t + 1));
+			}
+			public Number operatorSum(Test t) {
+				return 1;
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.sub">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				new Test() - new Test();
+			}
+			public void operatorSub(Test t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.mul">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				new Test() * new Test();
+			}
+			public void operatorMul(Test t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.div">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				new Test() / new Test();
+			}
+			public void operatorDiv(Test t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.and">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				new Test() and new Test();
+			}
+			public void operatorAnd(Test t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.or">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				new Test() or new Test();
+			}
+			public void operatorOr(Test t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.equal">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				new Test() == new Test();
+			}
+			public void operatorEqual(Test t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.notequal">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				new Test() != new Test();
+			}
+			public void operatorNotEqual(Test t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.high">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				new Test() > new Test();
+			}
+			public void operatorHigh(Test t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.highequal">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				new Test() >= new Test();
+			}
+			public void operatorHighEqual(Test t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.low">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				new Test() \< new Test();
+			}
+			public void operatorLow(Test t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="operator.lowequal">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				new Test() \<= new Test();
+			}
+			public void operatorLowEqual(Test t) {
+				Console.println(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="interface">
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1 {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 {
+		}
+	</source>
+</test>
+
+<test name="interface">
+	<expected endwith="true">the class not implemented the method '() a ()'</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1 {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 {
+			public void a ();		
+		}
+	</source>
+</test>
+
+<test name="interface">
+	<expected endwith="true">the class not implemented the method '() a ()'</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1 {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+</test>
+
+<test name="interface">
+	<expected>a</expected>
+	<expected>b</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1 {
+			public static void main(notnull IList\<String> args) {
+				new Test().a();
+				new Test().b();
+			}
+			public void a() {Console.println("a");}
+			public void b() {Console.println("b");}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+</test>
+
+<test name="interface">
+	<expected>a</expected>
+	<expected>b</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				new Test().a();
+				new Test().b();
+			}
+			public void a() {Console.println("a");}
+			public void b() {Console.println("b");}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public interface Test2 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+</test>
+
+<test name="interface">
+	<expected>a</expected>
+	<expected>b</expected>
+	<expected>c</expected>
+	<expected>d</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				new Test().a();
+				new Test().b();
+				new Test().c();
+				new Test().d();
+			}
+			public void a() {Console.println("a");}
+			public void b() {Console.println("b");}
+			public void c() {Console.println("c");}
+			public void d() {Console.println("d");}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public interface Test2 {
+			public void c ();
+			public void d ();
+		}
+	</source>
+</test>
+
+<test name="interface">
+	<expected>a</expected>
+	<expected>b</expected>
+	<expected>c</expected>
+	<expected>d</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				new Test().a();
+				new Test().b();
+				new Test().c();
+				new Test().d();
+			}
+			public void a() {Console.println("a");}
+			public void b() {Console.println("b");}
+			public void c() {Console.println("c");}
+			public void d() {Console.println("d");}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public interface Test2 extends Test3 {
+			public void c ();
+			public void d ();
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public interface Test3 {
+			public void c ();
+			public void d ();
+		}
+	</source>
+</test>
+
+<test name="interface">
+	<expected>a</expected>
+	<expected>b</expected>
+	<expected>c</expected>
+	<expected>d</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				new Test().a();
+				new Test().b();
+				new Test().c();
+				new Test().d();
+			}
+			public void a() {Console.println("a");}
+			public void b() {Console.println("b");}
+			public void c() {Console.println("c");}
+			public void d() {Console.println("d");}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 extends Test3 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public interface Test2 extends Test3 {
+			public void c ();
+			public void d ();
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public interface Test3 {
+			public void c ();
+			public void d ();
+		}
+	</source>
+</test>
+
+<test name="interface">
+	<expected endwith="true">the class not implemented the method '() e ()'</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				new Test().a();
+				new Test().b();
+				new Test().c();
+				new Test().d();
+			}
+			public void a() {Console.println("a");}
+			public void b() {Console.println("b");}
+			public void c() {Console.println("c");}
+			public void d() {Console.println("d");}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 extends Test3 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public interface Test2 extends Test3 {
+			public void c ();
+			public void d ();
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public interface Test3 {
+			public void e ();
+			public void f ();
+		}
+	</source>
+</test>
+
+<test name="interface">
+	<expected>a</expected>
+	<expected>b</expected>
+	<expected>c</expected>
+	<expected>d</expected>
+	<expected>e</expected>
+	<expected>f</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				new Test().a();
+				new Test().b();
+				new Test().c();
+				new Test().d();
+				new Test().e();
+				new Test().f();
+			}
+			public void a() {Console.println("a");}
+			public void b() {Console.println("b");}
+			public void c() {Console.println("c");}
+			public void d() {Console.println("d");}
+			public void e() {Console.println("e");}
+			public void f() {Console.println("f");}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 extends Test3 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public interface Test2 extends Test3 {
+			public void c ();
+			public void d ();
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public interface Test3 {
+			public void e ();
+			public void f ();
+		}
+	</source>
+</test>
+
+<test name="interface.extends">
+	<expected>a</expected>
+	<expected>b</expected>
+	<expected>c</expected>
+	<expected>d</expected>
+	<expected>e</expected>
+	<expected>f</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test4 implements Test1, Test2 {
+			public static void main(notnull IList\<String> args) {
+				new Test().a();
+				new Test().b();
+				new Test().c();
+				new Test().d();
+				new Test().e();
+				new Test().f();
+			}
+			public void a() {Console.println("a");}
+			public void b() {Console.println("b");}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 extends Test3 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public interface Test2 extends Test3 {
+			public void c ();
+			public void d ();
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public interface Test3 {
+			public void e ();
+			public void f ();
+		}
+	</source>
+	<source name="breder.Test4">
+		package breder;
+		public class Test4 {
+			public void c() {Console.println("c");}
+			public void d() {Console.println("d");}
+			public void e() {Console.println("e");}
+			public void f() {Console.println("f");}
+		}
+	</source>
+</test>
+
+<test name="interface.extends">
+	<expected>a</expected>
+	<expected>b</expected>
+	<expected>c</expected>
+	<expected>d</expected>
+	<expected>e</expected>
+	<expected>f</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test4 implements Test1 {
+			public static void main(notnull IList\<String> args) {
+				new Test().a();
+				new Test().b();
+				new Test().c();
+				new Test().d();
+				new Test().e();
+				new Test().f();
+			}
+			public void a() {Console.println("a");}
+			public void b() {Console.println("b");}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public interface Test2 extends Test3 {
+			public void c ();
+			public void d ();
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public interface Test3 {
+			public void e ();
+			public void f ();
+		}
+	</source>
+	<source name="breder.Test4">
+		package breder;
+		public class Test4 implements Test2 {
+			public void c() {Console.println("c");}
+			public void d() {Console.println("d");}
+			public void e() {Console.println("e");}
+			public void f() {Console.println("f");}
+		}
+	</source>
+</test>
+
+<test name="interface.extends">
+	<expected endwith="true">the class not implemented the method '() f ()'</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test4 implements Test1 {
+			public static void main(notnull IList\<String> args) {
+				new Test().a();
+				new Test().b();
+				new Test().c();
+				new Test().d();
+				new Test().e();
+				new Test().f();
+			}
+			public void a() {Console.println("a");}
+			public void b() {Console.println("b");}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public interface Test2 extends Test3 {
+			public void c ();
+			public void d ();
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public interface Test3 {
+			public void e ();
+			public void f ();
+		}
+	</source>
+	<source name="breder.Test4">
+		package breder;
+		public class Test4 implements Test2 {
+			public void c() {Console.println("c");}
+			public void d() {Console.println("d");}
+			public void e() {Console.println("e");}
+		}
+	</source>
+</test>
+
+<test name="interface.cast">
+	<expected>a</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1 {
+			public static void main(notnull IList\<String> args) {
+				((Test1)new Test()).a();
+			}
+			public void a() {Console.println("a");}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 {
+			public void a ();
+		}
+	</source>
+</test>
+
+<test name="interface.cast">
+	<expected>a</expected>
+	<expected>b</expected>
+	<expected>c</expected>
+	<expected>d</expected>
+	<expected>e</expected>
+	<expected>f</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test extends Test4 implements Test1 {
+			public static void main(notnull IList\<String> args) {
+				((Test1)new Test()).a();
+				((Test)new Test()).b();
+				((Test2)new Test()).c();
+				((Test3)new Test()).d();
+				((Test3)new Test()).e();
+				((Test4)new Test()).f();
+			}
+			public void a() {Console.println("a");}
+			public void b() {Console.println("b");}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1 {
+			public void a ();
+			public void b ();
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public interface Test2 extends Test3 {
+			public void c ();
+			public void d ();
+		}
+	</source>
+	<source name="breder.Test3">
+		package breder;
+		public interface Test3 {
+			public void c ();
+			public void d ();
+			public void e ();
+			public void f ();
+		}
+	</source>
+	<source name="breder.Test4">
+		package breder;
+		public class Test4 implements Test2 {
+			public void c() {Console.println("c");}
+			public void d() {Console.println("d");}
+			public void e() {Console.println("e");}
+			public void f() {Console.println("f");}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E> {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E> {
+			private E e;
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E> {
+			public E e () {return null;}
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E> {
+			public void e (E e) {}
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<source name="breder.Test">
+		package breder;
+		public abstract class Test\<E> {
+			public abstract E e () ;
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<source name="breder.Test">
+		package breder;
+		public abstract class Test\<E> {
+			public abstract E e (E e) ;
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E> {
+			public E e (E e) {return e;}
+			public static void main(notnull IList\<String> args) {
+				Test\<Number> t = new Test\<Number>();
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E> {
+			public E e (E e) {return e;}
+			public static void main(notnull IList\<String> args) {
+				Test\<Number> t = new Test\<Number>();
+				t.e(1);
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<expected endwith="">not found the method 'breder.Test.e'</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E> {
+			public E e (E e) {return e;}
+			public static void main(notnull IList\<String> args) {
+				Test\<Number> t = new Test\<Number>();
+				t.e("s");
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E> {
+			public E e (E e) {return e;}
+			public static void main(notnull IList\<String> args) {
+				Test\<Number> t = new Test\<Number>();
+				Console.println(t.e(1));
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E,T> {
+			public E e (E e) {return e;}
+			public static void main(notnull IList\<String> args) {
+				Test\<Number,String> t = new Test\<Number,String>();
+				Console.println(t.e(1));
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<expected endwith="true">number of generic is diferent</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E> {
+			public E e (E e) {return e;}
+			public static void main(notnull IList\<String> args) {
+				Test t = new Test();
+				Console.println(t.e(1));
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<expected endwith="true">number of generic is diferent</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E> {
+			public E e (E e) {return e;}
+			public static void main(notnull IList\<String> args) {
+				Test\<Number> t = new Test();
+				Console.println(t.e(1));
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<expected>1</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E> {
+			public E e (E e) {return e;}
+			public static void main(notnull IList\<String> args) {
+				Test\<Number> t = new Test\<Number>();
+				Console.println(t.e(1));
+			}
+		}
+	</source>
+</test>
+
+<test name="generic">
+	<expected endwith="true">number of generic is diferent</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E,T> {
+			public E e (E e) {return e;}
+			public static void main(notnull IList\<String> args) {
+				Test\<Number> t = new Test\<Number>();
+				Console.println(t.e(1));
+			}
+		}
+	</source>
+</test>
+
+<test name="generic.interface">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1\<E> {
+		}
+	</source>
+</test>
+
+<test name="generic.interface">
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1\<Number> {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1\<E> {
+		}
+	</source>
+</test>
+
+<test name="generic.interface">
+	<expected endwith="true">the class not implemented the method '(\<E breder.lang.Object>) add (\<E breder.lang.Object>)'</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1\<Number> {
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1\<E> {
+			public E add(E e);
+		}
+	</source>
+</test>
+
+<test name="generic.interface">
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1\<Number> {
+			public Number add(Number e) { return e; }
+			public static void main(notnull IList\<String> args) {
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1\<E> {
+			public E add(E e);
+		}
+	</source>
+</test>
+
+<test name="generic.interface">
+	<expected>5</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test implements Test1\<Number> {
+			public Number add(Number e) { return e; }
+			public static void main(notnull IList\<String> args) {
+				Console.println(new Test().add(5));
+			}
+		}
+	</source>
+	<source name="breder.Test1">
+		package breder;
+		public interface Test1\<E> {
+			public E add(E e);
+		}
+	</source>
+</test>
+
+<test name="generic.cast">
+	<expected endwith="true">can not cast</expected>
+	<source name="breder.Test">
+		package breder;
+		public class Test\<E> {
+			public E e (E e) {return 1;}
+			public static void main(notnull IList\<String> args) {
+				Test\<Number> t = new Test\<Number>();
+				Console.println(t.e(1));
+			}
+		}
+	</source>
+</test>
+
+<test name="generic.cast">
+	<expected endwith="true">cannot cast breder.util.standard.ArrayList\<breder.lang.Number> to breder.util.IList\<breder.lang.String></expected>
+	<source name="breder.Test">
+		package breder;
+		import breder.util.*;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				IList\<String> list = new ArrayList\<Number>();
+			}
+		}
+	</source>
+</test>
+
+<test name="stress">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public Test(Test t) {}
+			public static void main(notnull IList\<String> args) {
+				Test t1 = new Test(new Test(null));
+				Test t2 = new Test(new Test(new Test(new Test(null))));
+				t2.a(new Test(t1)).a(t2);
+			}
+			public Test a(Test t){
+				return t;
+			}
+		}
+	</source>
+</test>
+
+<test name="stress">
+	<source name="breder.Test">
+		package breder;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+				Test2 t1 = new Test2(new Test2(null));
+				Test2 t2 = new Test2(new Test2(new Test2(new Test2(null))));
+				t2.a(new Test2(t1)).a(t2);
+			}
+		}
+	</source>
+	<source name="breder.Test2">
+		package breder;
+		public class Test2 {
+			public Test2(Test2 t) {}
+			public Test2 a(Test2 t){
+				return t;
+			}
+		}
+	</source>
+</test>
+
+<test name="stress">
+	<expected endwith="true">operator with wrong argument</expected>
+	<source name="test.Main">
+		package test;
+		import test2.*;
+		public class Main {
+			public static void main(notnull IList\<String> args) { 
+				Test2 t = new Test2();
+				t.setI(1); "ddd"+
+				Console.println("Hello!");  
+			}
+		}
+	</source>
+	<source name="test2.Test2">
+		package test2;
+		public class Test2 {
+			public property Number i; 
+		}
+	</source>
+</test>
+
+<test name="stress">
+    <expected>false</expected>
+    <expected>true</expected>
+	<expected>5</expected>
+	<source name="breder.Test">
+		package breder;
+		import breder.util.*;
+		public class Test {
+			public static void main(notnull IList\<String> args) {
+                Integer i = 1;
+                Console.println(i == 200);
+                Console.println(i == 1); 
+				ArrayList\<Number> l = new ArrayList\<Number>();
+				l.add(5);
+				Console.println(l.get(1));
+			}
+		}
+	</source>
+</test>
+
+
+<test name="stress.hashmap">
+<expected>3</expected>
+<expected>2</expected>
+<expected>4</expected>
+<expected>6</expected>
+<expected>null</expected>
+<expected>null</expected>
+<expected>3</expected>
+<expected>1.5</expected>
+<expected>3.5</expected>
+<expected>5.5</expected>
+<expected>null</expected>
+<expected>null</expected>
+<expected>1.5</expected>
+<expected>3.5</expected>
+<expected>5.5</expected>
+<expected>0</expected>
+	<source name="breder.Test">
+		package breder;
+		import breder.util.*;
+		public class Test {
+			public static void main(notnull IList\<String> args) { 
+				IMap\<String,String> map = new HashMap\<String,String>();
+				map.set("1","2");
+				map.set("3","4");
+				map.set("5","6");
+				Console.println(map.size());
+				Console.println(map.get("1"));
+				Console.println(map.get("3"));
+				Console.println(map.get("5"));
+				Console.println(map.get("7"));
+				Console.println(map.get("9"));
+				map.set("1","1.5");
+				map.set("3","3.5");
+				map.set("5","5.5");
+				Console.println(map.size());
+				Console.println(map.get("1"));
+				Console.println(map.get("3"));
+				Console.println(map.get("5"));
+				Console.println(map.get("7"));
+				Console.println(map.get("9"));
+				Console.println(map.remove("1"));
+				Console.println(map.remove("3"));
+				Console.println(map.remove("5"));
+				Console.println(map.size());
+			}
+		}
+	</source>
+</test>
+
+<test name="stress.matrix">
+	<expected>1</expected>
+	<expected>2</expected>
+	<expected>3</expected>
+	<expected>4</expected>
+	<expected>5</expected>
+	<expected>6</expected>
+	<expected>true</expected>
+	<expected>true</expected>
+	<expected>true</expected>
+	<source name="breder.Test">
+		package breder;
+		import breder.util.*;
+		import breder.math.*;
+		public class Test {
+			public static void main(notnull IList\<String> args) { 
+				Matrix m = new Matrix("1,2,3.4,5,6.");
+				Console.println(m.get(1,1));
+				Console.println(m.get(1,2));
+				Console.println(m.get(1,3));
+				Console.println(m.get(2,1));
+				Console.println(m.get(2,2));
+				Console.println(m.get(2,3));
+				try {
+					Console.println(m.get(0,0));
+					Console.println(false);
+				} catch ( IndexOutOfBoundsRuntimeException e ) {
+					Console.println(true);
+				}
+				try {
+					Console.println(m.get(null,null));
+					Console.println(false);
+				} catch ( NullPointerRuntimeException e2 ) {
+					Console.println(true);
+				}
+				try {
+					Console.println(m.get(3,3));
+					Console.println(false);
+				} catch ( IndexOutOfBoundsRuntimeException e1 ) {
+					Console.println(true);
+				}
+			}
+		}
+	</source>
+</test>
+
+<test name="stress.vector2D">
+    <expected>Vector2D[x=2, y=3]</expected>
+    <expected>3.605551</expected>
+    <source name="breder.Test">
+        package breder;
+        import breder.gui.*;
+        import breder.math.*;
+        public class Test {
+            public static void main(notnull IList\<String> args) {
+                Vector2D v = new Vector2D(2, 3);
+                Console.println(v);
+                Console.println(v.length());
+            }
+        }
+    </source>
+</test>
+
+<test name="stress.arraylist">
+    <expected>5</expected>
+    <expected>10</expected>
+    <expected>false</expected>
+    <expected>true</expected>
+    <expected>3</expected>
+    <expected>1</expected>
+    <expected>2</expected>
+    <expected>4</expected>
+    <expected>5</expected>
+    <expected>6</expected>
+    <expected>3</expected>
+    <expected>false</expected>
+    <expected>true</expected>
+    <expected>true</expected>
+    <expected>true</expected>
+    <expected>false</expected>
+    <expected>1</expected>
+    <expected>2</expected>
+    <expected>3</expected>
+    <expected>null</expected>
+    <expected>1</expected>
+    <expected>null</expected>
+    <expected>true</expected>
+    <source name="breder.Test">
+        package breder;
+        import breder.util.*;
+        public class Test {
+            public static void main(notnull IList\<String> args) { 
+                IList\<Number> list = new ArrayList\<Number>(); 
+                list.add(5); 
+                list.add(10);
+                Console.println(list.get(1));
+                Console.println(list.get(2)); 
+                Console.println(list.isEmpty());
+                list.clear();
+                Console.println(list.isEmpty());
+                list.add(1); 
+                list.add(2);
+                list.add(3);
+                Console.println(list.size());
+                Console.println(list.get(1));
+                Console.println(list.get(2));
+                list.set(1, 4);
+                list.set(2, 5);
+                list.set(3, 6); 
+                Console.println(list.get(1));
+                Console.println(list.get(2));
+                Console.println(list.get(3));
+                Console.println(list.size());
+                Console.println(list.isEmpty());
+                Console.println(list.contain(4));
+                Console.println(list.contain(5));
+                Console.println(list.contain(6));
+                Console.println(list.contain(1));
+                Console.println(list.indexOf(4));
+                Console.println(list.indexOf(5));
+                Console.println(list.indexOf(6));
+                Console.println(list.indexOf(7));
+                Console.println(list.indexOf(4,1));
+                Console.println(list.indexOf(4,2));
+                try {
+                    list.get(10);
+                    Console.println(false);
+                } catch ( IndexOutOfBoundsRuntimeException e2 ) {
+                    Console.println(true);
+                }
+            }
+        }
+    </source>
+</test>
+
+<test name="stress.vector3D">
+    <expected>Vector3D[x=2, y=3, z=4]</expected>
+    <expected>5.385165</expected>
+    <expected>Vector3D[x=0.371391, y=0.557086, z=0.742781]</expected>
+    <expected>Vector3D[x=5, y=7, z=9]</expected>
+    <expected>Vector3D[x=-1, y=-1, z=-1]</expected>
+    <expected>Vector3D[x=6, y=12, z=20]</expected>
+    <expected>Vector3D[x=4, y=6, z=8]</expected>
+    <expected>Vector3D[x=-1, y=2, z=-1]</expected>
+    <source name="breder.Test">
+        package breder;
+        import breder.gui.*;
+        import breder.math.*;
+        public class Test {
+            public static void main(notnull IList\<String> args) {
+                Vector3D v1 = new Vector3D(2, 3, 4);
+                Vector3D v2 = new Vector3D(3, 4, 5);
+                Console.println(v1);
+                Console.println(v1.length());
+                Console.println(v1.normalize());
+                Console.println(v1 + v2);
+                Console.println(v1 - v2);
+                Console.println(v1 * v2);
+                Console.println(v1 * 2);
+                Console.println(v1.crossProduct(v2));
+            }
+        }
+    </source>
+</test>

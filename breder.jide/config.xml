@@ -1,0 +1,11 @@
+<language name="breder" class="breder.ide.lang.breder.BrederLanguage">
+	<build>java -cp ../breder.compiler/bin brederj.BrederCompiler %s</build>
+	<run>../breder.vm/Release/breder %s -lp ../breder.native.util/Release -lp ../breder.native.lang/Release -lp ../breder.native.gui/Release</run>
+	<debug>../breder.vm/Release/breder %s</debug>
+</language>
+
+<language name="c" class="breder.ide.lang.c.CLanguage">
+	<build>gcc %s</build>
+	<run></run>
+	<debug>gdb %s</debug>
+</language>

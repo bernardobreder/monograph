@@ -1,0 +1,57 @@
+
+package breder.game;
+
+import breder.gui.iphone.*;
+import breder.gui.iphone.standard.*;
+
+public class BSpriteImage extends IPhoneImageComponent {
+
+    private Natural lin;
+    
+    private Natural col;
+    private Natural bcol;
+    private Natural ecol;
+    
+    private Natural gridw;
+    private Natural gridh;
+    
+    private Boolean selected;
+    
+    public BSpriteImage(notnull Integer x, notnull Integer y, notnull IIPhoneImage image, notnull Natural gridw, notnull Natural gridh, notnull Natural lin, notnull Natural bcol, notnull Natural ecol) {
+        super(x, y, image);
+        this.setWidth(gridw);
+        this.setHeight(gridh);
+        this.lin = lin;
+        this.bcol = bcol;
+        this.ecol = ecol;
+        this.col = bcol;
+        this.gridw = gridw;
+        this.gridh = gridh;
+        this.selected = false;
+        this.setSelectable(true);
+    }
+    
+    public void update () {
+        this.col = this.col + 1;
+        if (this.col == this.ecol) {
+            this.col = this.bcol;
+        }
+    }
+    
+    public void paint(notnull IIPhoneGraphic g) {
+        if (!this.selected) {
+            g.drawImage(0, 0, this.col * this.gridw, this.lin * this.gridh, this.gridw, this.gridh, this.getImage());
+        }
+    }
+    
+    public IIPhoneComponent touchPress(notnull Natural x, notnull Natural y) {
+        this.selected = true;
+        return this;
+    }
+    
+    public void touchRelease(notnull Natural x, notnull Natural y) {
+        this.selected = false;
+    }
+    
+    
+}

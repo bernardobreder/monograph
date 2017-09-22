@@ -1,0 +1,48 @@
+
+package breder.gui;
+
+public abstract class BComponent {
+
+    public native BComponent (notnull Integer x, notnull Integer y, notnull Natural width, notnull Natural height) ;
+    
+    public void init () {}
+    
+    public final native notnull Integer getX();
+    
+    public final native notnull Integer getY();
+    
+    public native void setX(notnull Integer value);
+    
+    public native void setY(notnull Integer value);
+
+	public final native notnull Natural getWidth();
+	
+	public final native notnull Natural getHeight();
+	
+	public native void setWidth(notnull Natural value);
+    
+    public native void setHeight(notnull Natural value);
+    
+    public final native BContainer getParent () ;
+    
+    public final native notnull Integer getAbsoluteX () ;
+    
+    public native notnull Integer getAbsoluteY () ;
+    
+    public native void setParent (BContainer container) ;
+	
+	public abstract void update();
+	
+	public abstract void paint(notnull IGraphic g);
+	
+	public native void repaint();
+	
+	public abstract void touchPress(notnull Natural x, notnull Natural y) ;
+    
+    public abstract void touchDrag(notnull Natural x, notnull Natural y) ;
+    
+    public abstract void touchRelease(notnull Natural x, notnull Natural y) ;
+	
+	public native void finalize () ;
+	
+}

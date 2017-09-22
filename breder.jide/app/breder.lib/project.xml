@@ -1,0 +1,5 @@
+<project language="c" type="static">
+	<include src="inc" />
+	<source src="src" />
+	<target dir="bin" file="breder" />
+</project>
