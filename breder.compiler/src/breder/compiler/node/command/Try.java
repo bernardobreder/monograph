@@ -1,4 +1,3 @@
-
 package breder.compiler.node.command;
 
 import java.io.IOException;
@@ -15,17 +14,18 @@ import breder.compiler.parser.javacc.Token;
 import breder.compiler.util.LightArrayList;
 
 public class Try extends Command implements ICommand {
-
+	
 	private Token tryToken;
-
+	
 	private Block block;
-
-	private final List<VariableDeclare> catchs = new LightArrayList<VariableDeclare>();
-
+	
+	private final List<VariableDeclare> catchs =
+		new LightArrayList<VariableDeclare>();
+	
 	private final List<Block> blocks = new LightArrayList<Block>();
-
+	
 	private int[] declareIndex;
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -46,7 +46,7 @@ public class Try extends Command implements ICommand {
 			context.popBlock();
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -72,7 +72,7 @@ public class Try extends Command implements ICommand {
 			}
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -88,12 +88,13 @@ public class Try extends Command implements ICommand {
 			block.check(context);
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void build(Context context, BinaryOutputStream output) throws IOException {
+	public void build(Context context, BinaryOutputStream output)
+		throws IOException {
 		int end = 1;
 		{
 			end += this.block.instCount(context) + 1;
@@ -116,18 +117,20 @@ public class Try extends Command implements ICommand {
 		for (int n = 0; n < this.catchs.size(); n++) {
 			BParam declare = this.catchs.get(n);
 			int classindex = declare.getType().getStruct().getIndex();
-			output.printClassJump(this.catchs.size() - 1, classindex, declare.getName());
+			output.printClassJump(this.catchs.size() - 1, classindex,
+				declare.getName());
 		}
 		output.printTryFalseReturn(this.getTryToken());
 		if (this.blocks.size() > 1) {
-			for (int index = this.catchs.size(), n = 0; n < this.catchs.size(); index += this.getBlocks().get(n)
-					.instCount(context) + 1, n++) {
+			for (int index = this.catchs.size(), n = 0; n < this.catchs.size(); index +=
+				this.getBlocks().get(n).instCount(context) + 1, n++) {
 				output.printJump(index, this.getCatchs().get(index).getName());
 			}
 		}
 		for (int n = 0; n < this.catchs.size(); n++) {
 			Block block = this.blocks.get(n);
-			output.printTStore(this.declareIndex[n], this.getCatchs().get(n).getName());
+			output.printTStore(this.declareIndex[n], this.getCatchs().get(n)
+				.getName());
 			output.setStack(0);
 			block.build(context, output);
 			if (n != this.catchs.size() - 1) {
@@ -135,7 +138,7 @@ public class Try extends Command implements ICommand {
 			}
 		}
 	}
-
+	
 	@Override
 	public boolean isReturned() {
 		if (!this.getBlock().isReturned()) {
@@ -148,37 +151,37 @@ public class Try extends Command implements ICommand {
 		}
 		return true;
 	}
-
+	
 	public int[] getDeclareIndex() {
 		return declareIndex;
 	}
-
+	
 	public Block getBlock() {
 		return block;
 	}
-
+	
 	public void setBlock(Block block) {
 		this.block = block;
 	}
-
+	
 	public List<VariableDeclare> getCatchs() {
 		return catchs;
 	}
-
+	
 	public List<Block> getBlocks() {
 		return blocks;
 	}
-
+	
 	public Token getTryToken() {
 		return tryToken;
 	}
-
+	
 	public void setTryToken(Token tryToken) {
 		this.tryToken = tryToken;
 	}
-
+	
 	public void setDeclareIndex(int[] declareIndex) {
 		this.declareIndex = declareIndex;
 	}
-
+	
 }

@@ -1,4 +1,3 @@
-
 package breder.compiler.util;
 
 import java.util.ArrayList;
@@ -9,10 +8,17 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.RandomAccess;
 
-public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java.io.Serializable {
-
+/**
+ * ArrayList leve
+ * 
+ * @author bernardobreder
+ * @param <E>
+ */
+public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable,
+	java.io.Serializable {
+	
 	private List<E> delagate;
-
+	
 	@Override
 	public int size() {
 		if (this.delagate == null) {
@@ -21,7 +27,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.size();
 		}
 	}
-
+	
 	@Override
 	public boolean isEmpty() {
 		if (this.delagate == null) {
@@ -30,7 +36,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.isEmpty();
 		}
 	}
-
+	
 	@Override
 	public boolean contains(Object o) {
 		if (this.delagate == null) {
@@ -39,7 +45,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.contains(o);
 		}
 	}
-
+	
 	@Override
 	public Iterator<E> iterator() {
 		if (this.delagate == null) {
@@ -48,7 +54,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.iterator();
 		}
 	}
-
+	
 	@Override
 	public Object[] toArray() {
 		if (this.delagate == null) {
@@ -57,7 +63,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.toArray();
 		}
 	}
-
+	
 	@Override
 	@SuppressWarnings("unchecked")
 	public <T> T[] toArray(T[] a) {
@@ -67,7 +73,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.toArray(a);
 		}
 	}
-
+	
 	@Override
 	public boolean add(E e) {
 		if (this.delagate == null) {
@@ -75,7 +81,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 		}
 		return this.delagate.add(e);
 	}
-
+	
 	@Override
 	public boolean remove(Object o) {
 		if (this.delagate == null) {
@@ -84,7 +90,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.remove(o);
 		}
 	}
-
+	
 	@Override
 	public boolean containsAll(Collection<?> c) {
 		if (this.delagate == null) {
@@ -93,7 +99,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.containsAll(c);
 		}
 	}
-
+	
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
 		if (c.size() > 0) {
@@ -105,7 +111,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return false;
 		}
 	}
-
+	
 	@Override
 	public boolean addAll(int index, Collection<? extends E> c) {
 		if (c.size() > 0) {
@@ -117,7 +123,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return false;
 		}
 	}
-
+	
 	@Override
 	public boolean removeAll(Collection<?> c) {
 		if (this.delagate == null) {
@@ -126,7 +132,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.removeAll(c);
 		}
 	}
-
+	
 	@Override
 	public boolean retainAll(Collection<?> c) {
 		if (this.delagate == null) {
@@ -135,14 +141,14 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.retainAll(c);
 		}
 	}
-
+	
 	@Override
 	public void clear() {
 		if (this.delagate != null) {
 			this.delagate.clear();
 		}
 	}
-
+	
 	@Override
 	public E get(int index) {
 		if (this.delagate == null) {
@@ -151,7 +157,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.get(index);
 		}
 	}
-
+	
 	@Override
 	public E set(int index, E element) {
 		if (this.delagate == null) {
@@ -160,7 +166,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.set(index, element);
 		}
 	}
-
+	
 	@Override
 	public void add(int index, E element) {
 		if (this.delagate == null) {
@@ -168,7 +174,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 		}
 		this.delagate.add(index, element);
 	}
-
+	
 	@Override
 	public E remove(int index) {
 		if (this.delagate == null) {
@@ -177,7 +183,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.remove(index);
 		}
 	}
-
+	
 	@Override
 	public int indexOf(Object o) {
 		if (this.delagate == null) {
@@ -186,7 +192,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.indexOf(o);
 		}
 	}
-
+	
 	@Override
 	public int lastIndexOf(Object o) {
 		if (this.delagate == null) {
@@ -195,7 +201,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.lastIndexOf(o);
 		}
 	}
-
+	
 	@Override
 	public ListIterator<E> listIterator() {
 		if (this.delagate == null) {
@@ -204,7 +210,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.listIterator();
 		}
 	}
-
+	
 	@Override
 	public ListIterator<E> listIterator(int index) {
 		if (this.delagate == null) {
@@ -213,7 +219,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.listIterator(index);
 		}
 	}
-
+	
 	@Override
 	public List<E> subList(int fromIndex, int toIndex) {
 		if (this.delagate == null) {
@@ -222,7 +228,7 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.subList(fromIndex, toIndex);
 		}
 	}
-
+	
 	public String toString() {
 		if (this.delagate == null) {
 			return "[]";
@@ -230,51 +236,51 @@ public class LightArrayList<E> implements List<E>, RandomAccess, Cloneable, java
 			return this.delagate.toString();
 		}
 	}
-
+	
 	private static class EmptyIterator<E> implements ListIterator<E> {
-
+		
 		@Override
 		public boolean hasNext() {
 			return false;
 		}
-
+		
 		@Override
 		public E next() {
 			return null;
 		}
-
+		
 		@Override
 		public void remove() {
 		}
-
+		
 		@Override
 		public boolean hasPrevious() {
 			return false;
 		}
-
+		
 		@Override
 		public E previous() {
 			return null;
 		}
-
+		
 		@Override
 		public int nextIndex() {
 			return 0;
 		}
-
+		
 		@Override
 		public int previousIndex() {
 			return -1;
 		}
-
+		
 		@Override
 		public void set(E e) {
 		}
-
+		
 		@Override
 		public void add(E e) {
 		}
-
+		
 	}
-
+	
 }
